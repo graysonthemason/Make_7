@@ -1,7 +1,5 @@
 console.log("game.js connected!")
 
-
-
 function Game(){
     this.game = [[],[],[],[],[],[],[],[],[],[],[]];
     this.turn           = true;
@@ -137,10 +135,10 @@ Game.prototype = {
 
 function init() {
   currentGame = new Game;
-
   $tilep1 = $('div.tilep1');
   $tilep2 = $('div.tilep2');
   $columns = $('div.col');
+
   //droppable columns
   $.each($columns, function( index, value ) {
     $(value).droppable( {
@@ -157,7 +155,8 @@ function init() {
       }
     });
   });
-  // draggable tiles
+
+//toggle draggability
   function toggleDrag() {
     if(currentGame.turn) {
       $.each($tilep1, function(index, value){
@@ -175,6 +174,8 @@ function init() {
       });
     }
   }
+
+//initialize draggability on both players tiles
   $.each($tilep1, function(index, value){
     // debugger
     $(value).draggable( {
@@ -184,16 +185,18 @@ function init() {
     })
   })
   $.each($tilep2, function(index, value){
-    // debugger
     $(value).draggable( {
       containment: 'body',
       cursor: 'move',
       revert: true,
     })
   })
-toggleDrag()
-$('body > div.player1_tiles > ul > span').text(currentGame.player1Name);
-$('body > div.player2_tiles > ul > span').text(currentGame.player2Name);
+
+//call toggle in initialize here so that game starts correctly
+  toggleDrag()
+  //set player names
+  $('body > div.player1_tiles > ul > span').text(currentGame.player1Name);
+  $('body > div.player2_tiles > ul > span').text(currentGame.player2Name);
 }
 init();
 // g1 = new Game
