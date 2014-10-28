@@ -1,0 +1,187 @@
+body, html {
+  background-color: rgb(0,0,100);
+  color: black;
+}
+
+div.game_wrap {
+  padding: 0;
+  width: 684px;
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
+  height: 630px;
+  box-shadow: 4px 4px 40px;
+  position: relative;
+}
+
+h1.banner {
+  font-size: 2em;
+  margin: 10px;
+  font-family: 'Lato', sans-serif;
+  display: inline;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+
+div.sidebar_left {
+  float:left;
+  display: inline-block;
+  height: 500px;
+  width: 300px;
+  background: rgba(0,0,0,.5);
+}
+div.sidebar_right {
+  float: right;
+  display: inline-block;
+  height: 500px;
+  width: 300px;
+  background: rgba(0,0,0,.5);
+}
+div.col {
+  position: relative;
+  margin:0px;
+  /*border-left: solid 10px rgb(200,200,200);*/
+  width: 92px;
+  height: 100%;
+  float: left;
+  background: rgba(255, 255, 255, 1);
+  text-align: center;
+}
+div.divider {
+  position: relative;
+  float: left;
+  width: 5px;
+  height: 100%;
+  background-color: lightgrey;
+}
+
+
+div.tile_contain {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+div.player1_tiles {
+  color: white;
+  width: 240px;
+  height: 400px;
+  text-align: left;
+  background: rgba(255,255,255,.4);
+  font-size: 1.5em;
+  float: top;
+  right: 50%;
+  margin-right: 360px;
+  position: absolute;
+  border-radius: 20px;
+    box-shadow: 4px 4px 40px rgba(0,0,0,.4);
+  z-index: 500;
+  border-top: solid red 58px;
+  border-bottom: none;
+}
+ul.playername {
+  margin-top: -50px;
+  text-align: center;
+  padding: 0;
+  list-style: none;
+}
+span.name {
+  font-size: 1.4em;
+  text-align: center;
+  margin-bottom: 30px;
+
+}
+
+div.player2_tiles {
+  color: white;
+  width: 240px;
+  height: 400px;
+  text-align: left;
+  background: rgba(255,255,255,.4);
+  font-size: 1.5em;
+  float: top;
+  left: 50%;
+  margin-left: 360px;
+  position: absolute;
+  border-radius: 20px;
+    box-shadow: 4px 4px 40px rgba(0,0,0,.4);
+  z-index: 600;
+  border-top: solid red 58px;
+  border-bottom: none;
+}
+
+div.container_hover {
+ box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+   -moz-box-shadow:    inset 0 0 60px yellow;
+   -webkit-box-shadow: inset 0 0 60px yellow;
+   box-shadow:         inset 0 0 60px yellow;
+  border:1px solid yellow;
+    /*z-index: 600;*/
+    /*background-color: rgb(255,150,100);*/
+}
+
+span.tiletext {
+  /*width: 100%;*/
+  /*margin-top: 0;*/
+  font-size: 80px;
+  color: black;
+}
+div.stack {
+  position: absolute;
+  /*margin: auto;*/
+  z-index: 1201;
+  /*left:0px;
+  top: 0px;*/
+}
+div.tilestack1 {
+  margin: auto;
+  margin-top: 50px;
+  position: relative;
+  width: 90px;
+  height: 90px;
+  bottom: 40px;
+}
+div.tilestack2 {
+  margin: auto;
+  position: relative;
+  width: 90px;
+  height: 90px;
+  bottom: 40px;
+}
+div.tilestack3 {
+  margin: auto;
+  position: relative;
+  width: 90px;
+  height: 90px;
+  bottom: 40px;
+}
+div.tile {
+  border-radius: 8px;
+  text-shadow: 1px 1px 1px black;
+  left: -1px;
+  bottom: 0px;
+  background-color: yellow;
+  width: 90px;
+  height: 88px;
+  z-index: 1202;
+  margin: auto;
+  border: solid black 1px;
+}
+
+div.tile_show2 {
+/*  bottom: 1px;
+  text-shadow: 1px 1px 1px black;
+  position: relative;*/
+  /*background-color: rgb(255,230,0);*/
+  background-color: white;
+/*  width: 100%;
+  height: 100%;
+  z-index: 100;
+  color: white;
+  margin: -3px, -1px -3px -3px;
+  left: -1px;*/
+}

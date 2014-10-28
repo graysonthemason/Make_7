@@ -1,0 +1,153 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Make 7</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="/public/stylesheets/normalize.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/public/stylesheets/style.css" rel="stylesheet" type="text/css" media="all">
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,900,400italic' rel='stylesheet' type='text/css'>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  </head>
+<body>
+  <header>
+    <h1 class="banner"><a href='/'>Home</a></h1>
+    <h1 class="banner"><a href='/'>New Game</a></h1>
+    <h1 class="banner"><a href='/rules'>Rules</a></h1>
+  </header>
+<!-- <div class="sidebar_left"> -->
+  <div class="player1_tiles">
+    <ul class="playername"><span class="name">Player2</span>
+      <br><br>
+      Tiles Left
+      <li>
+        <div class="tilestack1">
+          <div class="tile stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+        </div>
+      </li>
+      <li>
+        <div class="tilestack2">
+          <div class="tile stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+          <div class="tile stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+          <div class="tile stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+          <div class="tile stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+          <div class="tile stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+          <div class="tile stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+          <div class="tile stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+          <div class="tile stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+        </div>
+        </li>
+      <li>
+        <div class="tilestack3">
+          <div class="tile stack" id="draggable3" data-val="3"><span class="tiletext">3</span></div>
+          <div class="tile stack" id="draggable3" data-val="3"><span class="tiletext">3</span></div>
+          <div class="tile stack" id="draggable3" data-val="3"><span class="tiletext">3</span>
+        </div>
+      </div>
+      </li>
+      <br>
+    </ul>
+  </div>
+<div class="player2_tiles">
+  <ul class="playername"><span class="name">Player2</span>
+      <br><br>
+      Tiles Left
+      <li>
+        <div class="tilestack1">
+          <div class="tile stack tile_show2" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack tile_show2" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack tile_show2" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack tile_show2" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack tile_show2" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack tile_show2" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack tile_show2" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack tile_show2" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack tile_show2" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack tile_show2" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack tile_show2" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+          <div class="tile stack tile_show2" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+        </div>
+      </li>
+      <li>
+        <div class="tilestack2">
+          <div class="tile stack tile_show2" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+          <div class="tile stack tile_show2" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+          <div class="tile stack tile_show2" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+          <div class="tile stack tile_show2" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+          <div class="tile stack tile_show2" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+          <div class="tile stack tile_show2" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+          <div class="tile stack tile_show2" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+          <div class="tile stack tile_show2" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+        </div>
+        </li>
+      <li>
+        <div class="tilestack3">
+          <div class="tile stack tile_show2" id="draggable3" data-val="3"><span class="tiletext">3</span></div>
+          <div class="tile stack tile_show2" id="draggable3" data-val="3"><span class="tiletext">3</span></div>
+          <div class="tile stack tile_show2" id="draggable3" data-val="3"><span class="tiletext">3</span>
+        </div>
+      </div>
+      </li>
+      <br>
+    </ul>
+  </div>
+<div class="game_wrap">
+  <div class="divider"></div>
+  <div class="col" data-col-idx="0">
+    <div class="tile_contain"></div>
+  </div>
+  <div class="divider"></div>
+  <div class="col" data-col-idx="1">
+    <div class="tile_contain"></div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="col" data-col-idx="2">
+    <div class="tile_contain"></div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="col" data-col-idx="3">
+    <div class="tile_contain"></div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="col" data-col-idx="4">
+    <div class="tile_contain"></div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="col" data-col-idx="5">
+    <div class="tile_contain"></div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="col" data-col-idx="6">
+    <div class="tile_contain"></div>
+  </div>
+  <div class="divider"></div>
+</div>
+    <script src="/public/scripts/main.js"></script>
+    <script src="/public/scripts/game.js"></script>
+    <script src="/public/scripts/game_view.js"></script>
+
+</body>
+</html>
