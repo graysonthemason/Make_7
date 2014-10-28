@@ -24,6 +24,8 @@ Game.prototype = {
     }
     this.checkForWinner();
     this.turn = !this.turn;
+    debugger
+    window.toggleDrag();
   },
   diagonal: function() {
     var countStart = -4;
@@ -136,17 +138,8 @@ Game.prototype = {
 function init() {
   currentGame = new Game;
 
-  $tile = $('div.tile');
-  $tile1 = $("body > div.player1_tiles > ul > li:nth-child(4) > div");
-  $tile2 = $('#draggable2');
-  $tile3 = $('#draggable3');
-  $column1 = $("body > div.game_wrap > div:nth-child(1)");
-  $column2 = $("body > div.game_wrap > div:nth-child(2)");
-  $column3 = $("body > div.game_wrap > div:nth-child(3)");
-  $column4 = $("body > div.game_wrap > div:nth-child(4)");
-  $column5 = $("body > div.game_wrap > div:nth-child(5)");
-  $column6 = $("body > div.game_wrap > div:nth-child(6)");
-  $column7 = $("body > div.game_wrap > div:nth-child(7)");
+  $tilep1 = $('div.tilep1');
+  $tilep2 = $('div.tilep2');
   $columns = $('div.col');
   //droppable columns
   $.each($columns, function( index, value ) {
@@ -155,9 +148,6 @@ function init() {
       drop: function(ev, ui) {
         var column = parseInt($(this).data('col-idx'));
         var val = parseInt($(ui.draggable.context).data('val'));
-        // console.log('dro-o-o-op!', ev, ui, this);
-        // console.log("game model index: ", $(this).data('col-idx');
-        console.log("game model value: ", $(ui.draggable.context).data('val'));
         var draggable = ui.draggable;
         draggable.draggable( 'option', 'revert', false );
         draggable.draggable( 'disable' );
@@ -167,10 +157,25 @@ function init() {
       }
     });
   });
-
-
-// draggable tiles
-  $.each($tile, function(index, value){
+  // draggable tiles
+  function toggleDrag() {
+    if(currentGame.turn) {
+      $.each($tilep1, function(index, value){
+        $(value).draggable( 'enable' );
+      });
+      $.each($tilep2, function(index, value){
+        $(value).draggable('disable');
+      });
+    } else {
+      $.each($tilep2, function(index, value){
+        $(value).draggable('enable');
+      });
+      $.each($tilep1, function(index, value){
+        $(value).draggable('disable');
+      });
+    }
+  }
+  $.each($tilep1, function(index, value){
     // debugger
     $(value).draggable( {
       containment: 'body',
@@ -178,6 +183,17 @@ function init() {
       revert: true,
     })
   })
+  $.each($tilep2, function(index, value){
+    // debugger
+    $(value).draggable( {
+      containment: 'body',
+      cursor: 'move',
+      revert: true,
+    })
+  })
+toggleDrag()
+$('body > div.player1_tiles > ul > span').text(currentGame.player1Name);
+$('body > div.player2_tiles > ul > span').text(currentGame.player2Name);
 }
 init();
 // g1 = new Game

@@ -138,50 +138,49 @@ div.stack {
   top: 0px;*/
 }
 div.tilestack1 {
-  margin: auto;
+  margin:     auto;
   margin-top: 50px;
-  position: relative;
-  width: 90px;
-  height: 90px;
-  bottom: 40px;
+  position:   relative;
+  width:      90px;
+  height:     90px;
+  bottom:     40px;
 }
 div.tilestack2 {
-  margin: auto;
-  position: relative;
-  width: 90px;
-  height: 90px;
-  bottom: 40px;
+  margin:     auto;
+  position:   relative;
+  width:      90px;
+  height:     90px;
+  bottom:     40px;
 }
 div.tilestack3 {
-  margin: auto;
-  position: relative;
-  width: 90px;
-  height: 90px;
-  bottom: 40px;
+  margin:     auto;
+  position:   relative;
+  width:      90px;
+  height:     90px;
+  bottom:     40px;
 }
-div.tile {
-  border-radius: 8px;
-  text-shadow: 1px 1px 1px black;
-  left: -1px;
-  bottom: 0px;
-  background-color: yellow;
-  width: 90px;
-  height: 88px;
-  z-index: 1202;
-  margin: auto;
+div.tilep1 {
+  border-radius:  8px;
+  text-shadow:    1px 1px 1px black;
+  left:          -1px;
+  bottom:         0px;
+  background-color: white;
+  width:          90px;
+  height:         88px;
+  z-index:        1202;
+  margin:         auto;
   border: solid black 1px;
 }
 
-div.tile_show2 {
-/*  bottom: 1px;
+div.tilep2 {
+  border-radius: 8px;
   text-shadow: 1px 1px 1px black;
-  position: relative;*/
-  /*background-color: rgb(255,230,0);*/
-  background-color: white;
-/*  width: 100%;
-  height: 100%;
-  z-index: 100;
-  color: white;
-  margin: -3px, -1px -3px -3px;
-  left: -1px;*/
+  left:     -1px;
+  bottom:   0px;
+  background-color: yellow;
+  width:    90px;
+  height:   88px;
+  z-index:  1202;
+  margin: auto;
+  border: solid black 1px;
 }
