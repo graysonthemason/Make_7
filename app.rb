@@ -25,12 +25,7 @@ class App < Sinatra::Base
   ########################
 
   get('/') do
-    reset_values
-    $player1_name = nil
-    $player2_name = nil
-    $player_1_wins = 0
-    $player_2_wins = 0
-    render(:erb, :login)
+    render(:erb, :"login")
   end
 
 get('/rules') do
@@ -39,15 +34,6 @@ end
 
   get('/game') do
     redirect to('/') if $player1_name == nil || $player2_name == nil
-    $player1tiles
-    diagonal($player1)
-    diagonal($player2)
-    diagonal_down($player1)
-    diagonal_down($player2)
-    column($player1)
-    column($player2)
-    row($player1)
-    row($player2)
     if $winner && $turn
       $winner = $player2_name
       $player_2_wins += 1
