@@ -5,8 +5,9 @@ function Game(){
     this.turn           = true;
     this.player1Tiles   = [12, 8, 3];
     this.player2Tiles   = [12, 8, 3];
-    this.player1Name    = prompt("Please enter your name", "Player1");
-    this.player2Name    = prompt("Please enter your name", "Player2");
+
+    // this.player1Name    = prompt("Please enter your name", "Player1");
+    // this.player2Name    = prompt("Please enter your name", "Player2");
 }
 
 Game.prototype = {
@@ -22,8 +23,9 @@ Game.prototype = {
     }
     this.checkForWinner();
     this.turn = !this.turn;
-    debugger
-    window.toggleDrag();
+    toggleDrag();
+    toggleCheck();
+
   },
   diagonal: function() {
     var countStart = -4;
@@ -65,6 +67,7 @@ Game.prototype = {
           if (total == 7) {
             gameWinner = "PLAYER NAME";
             alert('we have a diagonal down winner, turn: '+ this.turn)
+            init()
           }
           count  += 1;
           count2 -= 1;
@@ -86,6 +89,8 @@ Game.prototype = {
         if (total == 7) {
           gameWinner = "PLAYER NAME";
           alert('we have a column winner, turn: '+ this.turn)
+          init()
+
         }
       }
     }
@@ -104,6 +109,7 @@ Game.prototype = {
         if (total == 7) {
           gameWinner = "PLAYER NAME";
           alert('we have a row winner, turn: '+ this.turn)
+          init()
         }
       }
       count += 1;
@@ -138,7 +144,7 @@ function init() {
   $tilep1 = $('div.tilep1');
   $tilep2 = $('div.tilep2');
   $columns = $('div.col');
-
+  //hide the rules
   //droppable columns
   $.each($columns, function( index, value ) {
     $(value).droppable( {
@@ -147,33 +153,23 @@ function init() {
         var column = parseInt($(this).data('col-idx'));
         var val = parseInt($(ui.draggable.context).data('val'));
         var draggable = ui.draggable;
-        draggable.draggable( 'option', 'revert', false );
-        draggable.draggable( 'disable' );
-        draggable.removeClass("stack");
-        draggable.detach().css({top: 0,left: 0}).prependTo(this.children);
-        currentGame.play(val, column);
+        if (column == 0 && val == 3 && currentGame.game[0].length != 2) {
+        } else if (column == 1 && val == 3 && currentGame.game[1].length != 4) {
+        } else if (column == 2 && val == 3 && currentGame.game[2].length != 5) {
+        } else if (column == 3 && val == 3 && currentGame.game[3].length != 3) {
+        } else if (column == 4 && val == 3 && currentGame.game[4].length != 5) {
+        } else if (column == 5 && val == 3 && currentGame.game[5].length != 4) {
+        } else if (column == 6 && val == 3 && currentGame.game[6].length != 2) {
+        } else {
+          draggable.draggable( 'option', 'revert', false );
+          draggable.draggable( 'disable' );
+          draggable.removeClass("stack");
+          draggable.detach().css({top: 0,left: 0}).prependTo($(this.children).first());
+          currentGame.play(val, column);
+        }
       }
     });
   });
-
-//toggle draggability
-  function toggleDrag() {
-    if(currentGame.turn) {
-      $.each($tilep1, function(index, value){
-        $(value).draggable( 'enable' );
-      });
-      $.each($tilep2, function(index, value){
-        $(value).draggable('disable');
-      });
-    } else {
-      $.each($tilep2, function(index, value){
-        $(value).draggable('enable');
-      });
-      $.each($tilep1, function(index, value){
-        $(value).draggable('disable');
-      });
-    }
-  }
 
 //initialize draggability on both players tiles
   $.each($tilep1, function(index, value){
@@ -193,42 +189,54 @@ function init() {
   })
 
 //call toggle in initialize here so that game starts correctly
-  toggleDrag()
+  toggleDrag();
+  toggleCheck();
   //set player names
-  $('body > div.player1_tiles > ul > span').text(currentGame.player1Name);
-  $('body > div.player2_tiles > ul > span').text(currentGame.player2Name);
+  $('body > div > div.player1_tiles > ul > span').text(currentGame.player1Name);
+  $('body > div > div.player2_tiles > ul > span').text(currentGame.player2Name);
+  $('body').removeClass('hide');
+}
+//toggle draggability
+function toggleDrag() {
+  if(currentGame.turn) {
+    $.each($tilep1, function(index, value){
+      $(value).draggable( 'enable' );
+    });
+    $.each($tilep2, function(index, value){
+      $(value).draggable('disable');
+    });
+  } else {
+    $.each($tilep2, function(index, value){
+      $(value).draggable('enable');
+    });
+    $.each($tilep1, function(index, value){
+      $(value).draggable('disable');
+    });
+  }
+}
+$checkLeft = $('body > div > div.player1_tiles > img');
+$checkRight = $('body > div > div.player2_tiles > img');
+$rulesShow = $('body > header > h1:nth-child(3) > a');
+$rules = $('body > div > div.rules-wrap > div');
+$rulesShow.on("click", function(){
+  $rules.removeClass('hide');
+})
+$rulesHide = $('body > div > div.rules-wrap > div > button')
+$rulesHide.on('click', function(){
+  $rules.addClass('hide');
+})
+function toggleCheck() {
+  if(currentGame.turn) {
+    $checkLeft.show();
+    $checkRight.hide();
+  } else {
+    $checkRight.show();
+    $checkLeft.hide();
+  }
+}
+
+
+function newGame() {
 }
 init();
-// g1 = new Game
-// g1.play(2,0); //p1
-// g1.play(1,1);//p2
-// g1.play(2,0);//p1
-// g1.play(2,2);//p2
-// g1.play(3,0);//p1
-
-// g2 = new Game
-// g2.play(2,0); //p1
-// g2.play(1,1);//p2
-// g2.play(2,1);//p1
-// g2.play(2,2);//p2
-// g2.play(3,2);//p1
-// g2.play(2,0);//p2
-// g2.play(3,2);//p1
-
-// g3 = new Game
-// g3.play(2,0); //p1
-// g3.play(1,0);//p2
-// g3.play(2,1);//p1
-// g3.play(2,1);//p2
-// g3.play(3,2);//p1
-
-// g4 = new Game
-// g4.play(2,2); //p1
-// g4.play(1,1);//p2
-// g4.play(2,1);//p1
-// g4.play(2,0);//p2
-// g4.play(3,0);//p1
-// g4.play(2,5);//p2
-// g4.play(3,0);//p1
-
 

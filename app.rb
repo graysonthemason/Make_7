@@ -1,4 +1,8 @@
 require 'sinatra/base'
+require 'redis'
+require 'json'
+require 'uri'
+require 'pry'
 
 class App < Sinatra::Base
 
@@ -10,6 +14,11 @@ class App < Sinatra::Base
     enable :logging
     enable :method_override
     enable :sessions
+    $admin = false
+    uri = URI.parse(ENV["REDISTOGO_URL"])
+    $redis = Redis.new({:host => uri.host,
+                        :port => uri.port,
+                        :password => uri.password})
   end
 
   before do
@@ -28,25 +37,17 @@ class App < Sinatra::Base
     render(:erb, :"login")
   end
 
-get('/rules') do
-  render(:erb, :rules)
-end
-
   get('/game') do
-    redirect to('/') if $player1_name == nil || $player2_name == nil
-    if $winner && $turn
-      $winner = $player2_name
-      $player_2_wins += 1
-    elsif $winner
-      $winner = $player1_name
-      $player_1_wins += 1
-    end
-    render(:erb, :game)
+    render(:html, :"game")
   end
 
   get('/new_game') do
-    reset_values
       redirect to('/game')
   end
+  post('/new_game') do
+    # @params = params[]
+    binding.pry
+    # $redis.set("players", params.to_json)
+    redirect to('/game')
+  end
 end
-

@@ -1,11 +1,17 @@
 body, html {
   background-color: rgb(0,0,100);
   color: black;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 div.game_wrap {
   padding: 0;
-  width: 684px;
+  width: 668px;
   display: block;
   margin: auto;
   margin-bottom: 20px;
@@ -23,6 +29,9 @@ h1.banner {
 a {
   text-decoration: none;
   color: white;
+}
+a:hover {
+  cursor: pointer;
 }
 
 div.sidebar_left {
@@ -52,9 +61,9 @@ div.col {
 div.divider {
   position: relative;
   float: left;
-  width: 5px;
+  width: 3px;
   height: 100%;
-  background-color: lightgrey;
+  background-color: rgb(220,220,220);
 }
 
 
@@ -111,15 +120,32 @@ div.player2_tiles {
   border-top: solid red 58px;
   border-bottom: none;
 }
+div.tilep1 :hover {
+  cursor: pointer;
+}
+div.tilep2 :hover {
+  cursor: pointer;
+}
 
 div.container_hover {
  box-sizing:border-box;
   -moz-box-sizing:border-box;
   -webkit-box-sizing:border-box;
-   -moz-box-shadow:    inset 0 0 60px yellow;
-   -webkit-box-shadow: inset 0 0 60px yellow;
-   box-shadow:         inset 0 0 60px yellow;
-  border:1px solid yellow;
+   -moz-box-shadow:    inset 0 0 60px lightgreen;
+   -webkit-box-shadow: inset 0 0 60px lightgreen;
+   box-shadow:         inset 0 0 60px lightgreen;
+  /*border:1px solid yellow;*/
+    /*z-index: 600;*/
+    /*background-color: rgb(255,150,100);*/
+}
+div.container_hover_false:hover {
+ box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+   -moz-box-shadow:    inset 0 0 60px red;
+   -webkit-box-shadow: inset 0 0 60px red;
+   box-shadow:         inset 0 0 60px red;
+  /*border:1px solid yellow;*/
     /*z-index: 600;*/
     /*background-color: rgb(255,150,100);*/
 }
@@ -147,6 +173,7 @@ div.tilestack1 {
 }
 div.tilestack2 {
   margin:     auto;
+  margin-top: 16px;
   position:   relative;
   width:      90px;
   height:     90px;
@@ -154,6 +181,7 @@ div.tilestack2 {
 }
 div.tilestack3 {
   margin:     auto;
+  margin-top: 16px;
   position:   relative;
   width:      90px;
   height:     90px;
@@ -183,4 +211,326 @@ div.tilep2 {
   z-index:  1202;
   margin: auto;
   border: solid black 1px;
+}
+
+div.red1{
+  box-shadow: 0px 0px 2px;
+  position: absolute;
+  left: -7px;
+  bottom: 175px;
+  width: 86px;
+  height: 80px;
+  border: solid 10px red;
+  z-index: 1200;
+}
+div.red2{
+  box-shadow: 0px 0px 2px;
+  position: absolute;
+  left: -7px;
+  bottom: 355px;
+  width: 86px;
+  height: 80px;
+  border: solid 10px red;
+  z-index: 1200;
+}
+div.red3{
+  box-shadow: 0px 0px 2px;
+  position: absolute;
+  left: -7px;
+  bottom: 445px;
+  width: 86px;
+  height: 80px;
+  border: solid 10px red;
+  z-index: 1200;
+}
+div.red4{
+  box-shadow: 0px 0px 2px;
+  position: absolute;
+  left: -7px;
+  bottom: 265px;
+  width: 86px;
+  height: 80px;
+  border: solid 10px red;
+  z-index: 1200;
+}
+div.red5{
+  box-shadow: 0px 0px 2px;
+  position: absolute;
+  left: -7px;
+  bottom: 445px;
+  width: 86px;
+  height: 80px;
+  border: solid 10px red;
+  z-index: 1200;
+}
+div.red6{
+  box-shadow: 0px 0px 2px;
+  position: absolute;
+  left: -7px;
+  bottom: 355px;
+  width: 86px;
+  height: 80px;
+  border: solid 10px red;
+  z-index: 1200;
+}
+div.red7{
+  box-shadow: 0px 0px 2px;
+  position: absolute;
+  left: -7px;
+  bottom: 175px;
+  width: 86px;
+  height: 80px;
+  border: solid 10px red;
+  z-index: 1200;
+}
+img.right_image {
+  position: absolute;
+  top: -30px;
+  right: 8px;
+}
+img.left_image {
+  position: absolute;
+  top: -30px;
+  left: 170px;
+}
+
+@-webkit-keyframes hover {
+  50% {
+    -webkit-transform: translateY(-3px);
+    transform: translateY(-3px);
+  }
+
+  100% {
+    -webkit-transform: translateY(-6px);
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes hover {
+  50% {
+    -webkit-transform: translateY(-3px);
+    transform: translateY(-3px);
+  }
+
+  100% {
+    -webkit-transform: translateY(-6px);
+    transform: translateY(-6px);
+  }
+}
+
+@-webkit-keyframes hover-shadow {
+  0% {
+    -webkit-transform: translateY(6px);
+    transform: translateY(6px);
+    opacity: .4;
+  }
+
+  50% {
+    -webkit-transform: translateY(3px);
+    transform: translateY(3px);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: translateY(6px);
+    transform: translateY(6px);
+    opacity: .4;
+  }
+}
+
+@keyframes hover-shadow {
+  0% {
+    -webkit-transform: translateY(6px);
+    transform: translateY(6px);
+    opacity: .4;
+  }
+
+  50% {
+    -webkit-transform: translateY(3px);
+    transform: translateY(3px);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: translateY(6px);
+    transform: translateY(6px);
+    opacity: .4;
+  }
+}
+
+.hover-shadow {
+  display: inline-block;
+  position: relative;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.hover-shadow:before {
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  content: '';
+  top: 100%;
+  left: 5%;
+  height: 10px;
+  width: 90%;
+  opacity: 0;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+  /* W3C */
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform, opacity;
+  transition-property: transform, opacity;
+}
+.hover-shadow:hover, .hover-shadow:focus, .hover-shadow:active {
+  -webkit-transform: translateY(-6px);
+  transform: translateY(-6px);
+  -webkit-animation-name: hover;
+  animation-name: hover;
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+.hover-shadow:hover:before, .hover-shadow:focus:before, .hover-shadow:active:before {
+  opacity: .4;
+  -webkit-transform: translateY(6px);
+  transform: translateY(6px);
+  -webkit-animation-name: hover-shadow;
+  animation-name: hover-shadow;
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+div.rules-wrap {
+  position: absolute;
+  width: 100%;
+  height: 500px;
+  margin-top: 60px;
+  top: 0px;
+}
+.hide {
+  visibility: hidden;
+}
+div.rules {
+  font-weight: bold;
+  position: relative;
+  margin: auto;
+  background-color: rgba(255,255,255,.9);
+  max-width: 600px;
+  border-radius: 60px;
+  padding: 50px;
+  border: 10px white solid;
+  box-shadow: 4px 4px 26px;
+  text-align: left;
+  padding-bottom: 40px;
+  color: rgb(80,80,80);
+  z-index: 1205;
+}
+input {
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1.4em;
+  margin: 10px;
+  background: white;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  color: red;
+}
+input:hover {
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1.4em;
+  margin: 10px;
+  background: red;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  color: white;
+}
+button {
+  margin:auto;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1.4em;
+  margin: 10px;
+  background: white;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  color: red;
+}
+button:hover {
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1.4em;
+  margin: 10px;
+  background: red;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  color: white;
+}
+
+input.login_button {
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1.4em;
+  margin: 10px;
+  background: white;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  color: red;
+}
+input.login_button:hover {
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1.4em;
+  margin: 10px;
+  background: white;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  color: white;
+}
+button.login_button {
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1.4em;
+  margin: 10px;
+  background: white;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  color: red;
+}
+button.login_button:hover {
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1.4em;
+  margin: 10px;
+  background: red;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  color: white;
+}
+
+input.login {
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1.4em;
+  margin: 10px;
+  font-family: 'Lato', sans-serif;
 }
