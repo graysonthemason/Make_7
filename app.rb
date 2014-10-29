@@ -11,6 +11,10 @@ class App < Sinatra::Base
   ########################
 
   configure do
+    $player1_id = ""
+    $player2_id = ""
+    $game_id = ""
+    $turn = ""
     enable :logging
     enable :method_override
     enable :sessions
@@ -22,11 +26,10 @@ class App < Sinatra::Base
 
   ####################setup cookies?
     use Rack::Session::Cookie, :key => 'my_app_key',
-                             :path => '/game',
+                                :path => '/game',
                              :expire_after => 14400, # In seconds
                              :secret => 'secret_stuff'
   ##################################
-
 
   end
 
@@ -53,10 +56,20 @@ before do
   end
 
   get('/game') do
-    game = Game.create(session["player1_id"], session["player2_id"])
-    session["game_id"] = game.id.to_s
-    binding.pry
-    render(:html, :"game")
+    # binding.pry
+    @player1_name = $redis.get("user:id:#{$player1_id}:username")
+    @player2_name = $redis.get("user:id:#{$player2_id}:username")
+    @player1_id   = $player1_id
+    @player2_id   = $player2_id
+    @game_id      = $game_id
+    @turn         = $turn
+    @game_state   = JSON.parse($redis.get("game:id:#{$game_id}:game")).to_json
+    # binding.pry
+    render(:erb, :"game")
+  end
+  post('/game') do
+    $redis.set("game:id:#{$game_id}:game", params["game"])
+    $redis.set("game:id:#{$game_id}:turn", params["turn"])
   end
 
   get('/menu') do
@@ -66,7 +79,6 @@ before do
   get('/login_player2') do
     render(:erb, :"login2")
   end
-
 
   post('/signup_player1') do
     if params[:username] !~ /^\w+$/
@@ -85,8 +97,8 @@ before do
       redirect to('/')
     else
       user = User.create(params[:username], params[:password])
-      session["player1_id"] = user.id
-      redirect to("/menu")
+      $player1_id = user.id
+      redirect to ("/menu")
     end
   end
 
@@ -107,7 +119,7 @@ before do
       redirect to('/')
     else
       user = User.create(params[:username], params[:password])
-      session["player2_id"] = user.id
+      $player2_id = user.id
       redirect to("/game")
     end
   end
@@ -115,9 +127,9 @@ before do
   post('/login_player1') do
     user = User.find_by_username(params[:username])
     if user && User.hash_pw($redis.get("user:id:#{user.id}:salt"), params[:password]) == $redis.get("user:id:#{user.id}:hashed_password")
-      session["player1_id"] = user.id
+      $player1_id  = user.id
       redirect '/menu'
-    else
+          else
       @login_error = "Incorrect username or password"
       redirect '/'
     end
@@ -126,14 +138,15 @@ before do
   post('/login_player2') do
     user = User.find_by_username(params[:username])
     if user && User.hash_pw($redis.get("user:id:#{user.id}:salt"), params[:password]) == $redis.get("user:id:#{user.id}:hashed_password")
-      session["player2_id"] = user.id
+      $player2_id = user.id
+      game = Game.create($player1_id, $player2_id)
+      $game_id = game.id.to_s
       redirect '/game'
     else
       @login_error = "Incorrect username or password"
       redirect '/login_player2'
     end
   end
-
 end
 
 ############################################
@@ -177,12 +190,16 @@ end
 class Game
   attr_reader :id
   def initialize(id)
-  @id = id
+    @id = id
+    @game = [[],[],[],[],[],[],[],[],[],[],[]]
   end
+
   def self.create(player1, player2)
     game_id = $redis.incr("game:gid")
     $redis.set("game:id:#{game_id}:player1_id", player1)
     $redis.set("game:id:#{game_id}:player2_id", player2)
+    $redis.set("game:id:#{game_id}:game", ([[],[],[],[],[],[],[],[],[],[],[]]).to_json)
+    $redis.set("game:id:#{game_id}:turn", (true).to_json)
     Game.new(game_id)
   end
 end

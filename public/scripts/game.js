@@ -25,6 +25,20 @@ Game.prototype = {
     this.turn = !this.turn;
     toggleDrag();
     toggleCheck();
+    // this.updateGame();
+
+    $.ajax({
+      url:      "/game",
+      type:     "POST",
+      dataType: "json",
+      context:  this, // this sets context in done to the object
+      data: {
+          game: JSON.stringify(this.game),
+          turn: this.turn,
+      }
+    }).done(function(){
+      console.log('!(AJAX) game updated', this);
+    });
   },
   diagonal: function() {
     var countStart = -4;
@@ -135,6 +149,9 @@ Game.prototype = {
     this.diagonalDown();
     this.column();
   },
+
+  updateGame: function() {
+  }
 }
 
 ////////////////////////////////////////

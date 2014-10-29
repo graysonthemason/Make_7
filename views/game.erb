@@ -21,10 +21,13 @@
     <h1 class="banner"><a href='/'>New Game</a></h1>
     <h1 class="banner"><a>Rules</a></h1>
   </header>
+  <div id="game-identifier" data-game-id="<%= @game_id%>"></div>
+  <div id="game-state-identifier" data-game-id="<%= @game_state%>"></div>
+  <div id="turn-identifier" data-game-id="<%= @turn%>"></div>
 <div class="overlay">
   <div class="player1_tiles">
     <img class="left_image" width=60px src="/images/Ok-icon.png">
-    <ul class="playername"><span class="name"></span>
+    <ul class="playername"><span class="name"><%=@player1_name%></span>
       <br><br>
       Tiles Left
       <li>
@@ -68,7 +71,7 @@
   </div>
 <div class="player2_tiles">
   <img class="right_image" width=60px src="/images/Ok-icon.png">
-  <ul class="playername"><span class="name"></span>
+  <ul class="playername"><span class="name"><%=@player2_name%></span>
       <br><br>
       Tiles Left
       <li>
