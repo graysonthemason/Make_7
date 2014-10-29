@@ -25,7 +25,6 @@ Game.prototype = {
     this.turn = !this.turn;
     toggleDrag();
     toggleCheck();
-
   },
   diagonal: function() {
     var countStart = -4;
@@ -33,23 +32,23 @@ Game.prototype = {
     var count2 = 0;
     var total = 0;
     do {
-        do {
-          if (count >= 0 && this.getTileValue(count, count2)) {
-            total  += this.getTileValue(count, count2);
-          } else {
-            total   = 0;
-          }
-          if (total == 7) {
-            gameWinner = "PLAYER NAME";
-            alert('we have a diagonal up winner, turn: '+ this.turn)
-          }
-          count    += 1;
-          count2   += 1;
-        } while (count2 <= 6);
-        countStart += 1;
-        count  = countStart;
-        count2 = 0;
-      } while (count <= 4);
+      do {
+        if (count >= 0 && this.getTileValue(count, count2)) {
+          total  += this.getTileValue(count, count2);
+        } else {
+          total   = 0;
+        }
+        if (total == 7) {
+          gameWinner = "PLAYER NAME";
+          alert('we have a diagonal up winner, turn: '+ this.turn)
+        }
+        count    += 1;
+        count2   += 1;
+      } while (count2 <= 6);
+      countStart += 1;
+      count  = countStart;
+      count2 = 0;
+    } while (count <= 4);
   },
 
   diagonalDown: function() {
@@ -77,6 +76,7 @@ Game.prototype = {
         count2 = 6;
       } while (countStart <= 4);
   },
+
   column: function() {
     for (column = 0; column < 7; column++) {
       var total = 0;
