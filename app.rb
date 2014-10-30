@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'redis'
 require 'json'
 require 'uri'
+require 'pry'
 
 class App < Sinatra::Base
 
@@ -13,7 +14,6 @@ class App < Sinatra::Base
     $player1_id = ""
     $player2_id = ""
     $game_id = ""
-    $turn = ""
     $player1_wins = ""
     $player2_wins = ""
     $player1_losses = ""
@@ -56,7 +56,6 @@ before do
     @player1_id     = $player1_id
     @player2_id     = $player2_id
     @game_id        = $game_id
-    @turn           = $turn
     @game_state     = JSON.parse($redis.get("game:id:#{$game_id}:game")).to_json
     render(:erb, :"game")
   end
@@ -207,7 +206,7 @@ class Game
     $redis.set("game:id:#{game_id}:player1_id", player1)
     $redis.set("game:id:#{game_id}:player2_id", player2)
     $redis.set("game:id:#{game_id}:game", ([[],[],[],[],[],[],[],[],[],[],[]]).to_json)
-    $redis.set("game:id:#{game_id}:turn", (true).to_json)
+    $redis.set("game:id:#{game_id}:turn", "true")
     Game.new(game_id)
   end
 end
