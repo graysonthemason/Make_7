@@ -62,6 +62,8 @@ before do
   post('/game') do
     $redis.set("game:id:#{$game_id}:game", params["game"])
     $redis.set("game:id:#{$game_id}:turn", params["turn"])
+    status 200
+    body "ok"
   end
 
   get('/menu') do
@@ -89,10 +91,10 @@ before do
       @signup_error = "Username must only contain letters, numbers and underscores."
     elsif $redis.get("user:username:#{params[:username]}")
       @signup_error = "That username is taken."
-    elsif params[:username].length < 4
-      @signup_error = "Username must be at least 4 characters"
-    elsif params[:password].length < 6
-      @signup_error = "Password must be at least 6 characters!"
+    # elsif params[:username].length < 4
+    #   @signup_error = "Username must be at least 4 characters"
+    # elsif params[:password].length < 6
+    #   @signup_error = "Password must be at least 6 characters!"
     # elsif params[:password] != params[:password_confirmation]
     #   @signup_error = "Passwords do not match!"
     end
@@ -111,16 +113,16 @@ before do
       @signup_error = "Username must only contain letters, numbers and underscores."
     elsif $redis.get("user:username:#{params[:username]}")
       @signup_error = "That username is taken."
-    elsif params[:username].length < 4
-      @signup_error = "Username must be at least 4 characters"
-    elsif params[:password].length < 6
-      @signup_error = "Password must be at least 6 characters!"
+    # elsif params[:username].length < 4
+    #   @signup_error = "Username must be at least 4 characters"
+    # elsif params[:password].length < 6
+    #   @signup_error = "Password must be at least 6 characters!"
     # elsif params[:password] != params[:password_confirmation]
     #   @signup_error = "Passwords do not match!"
     end
     if @signup_error
       puts @signup_error
-      redirect to('/')
+      redirect to('/login_player2')
     else
       user = User.create(params[:username], params[:password])
       $player2_id = user.id
