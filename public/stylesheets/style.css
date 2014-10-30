@@ -1,12 +1,12 @@
 body, html {
   background-color: rgb(0,0,100);
   color: black;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 h1.welcome {
   color: white;
@@ -26,8 +26,6 @@ div.form-left {
   padding: 30px;
   border-radius: 40px;
   box-shadow: 4px 4px 40px black;
-
-  /*right: 50%;*/
 }
 div.or {
   position: absolute;
@@ -44,12 +42,10 @@ div.or {
 div.login_form {
   text-align: center;
   margin: auto;
-  /*background-color: red;*/
 }
 
 div.form-right {
   display:inline-block;
-  /*left: 50%;*/
   text-align: center;
   position: relative;
   border: solid 10px white;
@@ -59,8 +55,6 @@ div.form-right {
   padding: 30px;
   border-radius: 40px;
   box-shadow: 4px 4px 40px black;
-
-
 }
 button.backtothegame {
   left: 187px;
@@ -77,7 +71,6 @@ div.menu {
   padding: 30px;
   border-radius: 40px;
   box-shadow: 4px 4px 40px black;
-  /*margin-top: 100px;*/
 }
 
 div.game_wrap {
@@ -93,7 +86,6 @@ div.game_wrap {
 header {
   padding-bottom: 6px;
 }
-
 h1.banner {
   font-size: 2em;
   margin: 10px;
@@ -126,7 +118,6 @@ div.sidebar_right {
 div.col {
   position: relative;
   margin:0px;
-  /*border-left: solid 10px rgb(200,200,200);*/
   width: 92px;
   height: 100%;
   float: left;
@@ -141,7 +132,6 @@ div.divider {
   background-color: rgb(220,220,220);
   box-shadow: 2px 0px 20px rgba(0,0,0,.1);
   z-index: 200;
-
 }
 
 div.tile_contain {
@@ -162,7 +152,7 @@ div.player1_tiles {
   margin-right: 360px;
   position: absolute;
   border-radius: 20px;
-    box-shadow: 4px 4px 40px rgba(0,0,0,.4);
+  box-shadow: 4px 4px 40px rgba(0,0,0,.4);
   z-index: 500;
   border-top: solid red 58px;
   border-bottom: none;
@@ -205,40 +195,29 @@ div.tilep2 :hover {
 }
 
 div.container_hover {
- box-sizing:border-box;
+  box-sizing:border-box;
   -moz-box-sizing:border-box;
   -webkit-box-sizing:border-box;
-   -moz-box-shadow:    inset 0 0 60px lightgreen;
-   -webkit-box-shadow: inset 0 0 60px lightgreen;
-   box-shadow:         inset 0 0 60px lightgreen;
-  /*border:1px solid yellow;*/
-    /*z-index: 600;*/
-    /*background-color: rgb(255,150,100);*/
+  -moz-box-shadow:    inset 0 0 60px lightgreen;
+  -webkit-box-shadow: inset 0 0 60px lightgreen;
+  box-shadow:         inset 0 0 60px lightgreen;
 }
 div.container_hover_false:hover {
  box-sizing:border-box;
   -moz-box-sizing:border-box;
   -webkit-box-sizing:border-box;
-   -moz-box-shadow:    inset 0 0 60px red;
-   -webkit-box-shadow: inset 0 0 60px red;
-   box-shadow:         inset 0 0 60px red;
-  /*border:1px solid yellow;*/
-    /*z-index: 600;*/
-    /*background-color: rgb(255,150,100);*/
+  -moz-box-shadow:    inset 0 0 60px red;
+  -webkit-box-shadow: inset 0 0 60px red;
+  box-shadow:         inset 0 0 60px red;
 }
 
 span.tiletext {
-  /*width: 100%;*/
-  /*margin-top: 0;*/
   font-size: 80px;
   color: black;
 }
 div.stack {
   position: absolute;
-  /*margin: auto;*/
   z-index: 1201;
-  /*left:0px;
-  top: 0px;*/
 }
 div.tilestack1 {
   margin:     auto;
@@ -411,8 +390,6 @@ div.rules {
 }
 input {
   position:relative;
-
-  /*cursor: black;*/
   padding: 10px;
   border-radius: 20px;
   font-size: 1.4em;
@@ -428,12 +405,9 @@ input:hover {
   border-radius: 20px;
   font-size: 1.4em;
   margin: 10px;
-  /*background: red;*/
   font-family: 'Lato', sans-serif;
   font-weight: bold;
-  /*color: white;*/
   z-index: 1000;
-
 }
 button {
   position:relative;
@@ -448,11 +422,9 @@ button {
   font-weight: bold;
   color: red;
   z-index: 1000;
-
 }
 button:hover {
   position:relative;
-
   padding: 10px;
   border-radius: 20px;
   font-size: 1.4em;
@@ -462,12 +434,10 @@ button:hover {
   font-weight: bold;
   color: white;
   z-index: 1000;
-
 }
 
 input.login_button {
   position:relative;
-
   padding: 10px;
   border-radius: 20px;
   font-size: 1.4em;
@@ -477,11 +447,9 @@ input.login_button {
   font-weight: bold;
   color: red;
   z-index: 1000;
-
 }
 input.login_button:hover {
   position:relative;
-
   padding: 10px;
   border-radius: 20px;
   font-size: 1.4em;
@@ -495,7 +463,6 @@ input.login_button:hover {
 }
 button.login_button {
   position:relative;
-
   padding: 10px;
   border-radius: 20px;
   font-size: 1.4em;
@@ -505,11 +472,9 @@ button.login_button {
   font-weight: bold;
   color: red;
   z-index: 1000;
-
 }
 button.login_button:hover {
   position:relative;
-
   padding: 10px;
   border-radius: 20px;
   font-size: 1.4em;
@@ -519,7 +484,6 @@ button.login_button:hover {
   font-weight: bold;
   color: white;
   z-index: 1000;
-
 }
 
 input.login {
@@ -533,16 +497,16 @@ input.login {
 }
 div.top-left {
   border-radius: 20px 20px 0 0;
-border: solid 1px black;
-padding: 10px;
-margin-left: 40px;
-margin-right: 40px;
-font-size: .8em;
-background: rgba(0,0,0,.5);
-   -moz-box-shadow:    inset 0 0 10px rgba(0,0,0,.9);
-   -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,.9);
-   box-shadow:         inset 0 0 10px rgba(0,0,0,.9);
-text-shadow: 0 0 20px black;
+  border: solid 1px black;
+  padding: 10px;
+  margin-left: 40px;
+  margin-right: 40px;
+  font-size: .8em;
+  background: rgba(0,0,0,.5);
+  -moz-box-shadow:    inset 0 0 10px rgba(0,0,0,.9);
+  -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,.9);
+  box-shadow:         inset 0 0 10px rgba(0,0,0,.9);
+  text-shadow: 0 0 20px black;
 }
 div.bottom-left {
   border-radius: 0 0 20px 20px;
@@ -589,5 +553,4 @@ div#winwrap {
   width: 100%;
   top: 100px;
   text-align: center;
-  /*width: 100%;*/
 }
