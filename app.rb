@@ -31,12 +31,6 @@ class App < Sinatra::Base
   end
 
 before do
-  # unless %w(/login /signup).include?(request.path_info) or
-  #   request.path_info =~ /\.css$/ or
-  #   @logged_in_user = User.find_by_id(session["user_id"])
-  #   redirect '/login', 303
-  # end
-  #   puts "logged in as:#{@logged_in_user.username}" if @logged_in_user
     logger.info "Request Headers: #{headers}"
     logger.warn "Params: #{params}"
   end
@@ -66,6 +60,7 @@ before do
     @game_state     = JSON.parse($redis.get("game:id:#{$game_id}:game")).to_json
     render(:erb, :"game")
   end
+
   post('/game') do
     $redis.set("game:id:#{$game_id}:game", params["game"])
     $redis.set("game:id:#{$game_id}:turn", params["turn"])
@@ -140,7 +135,7 @@ before do
     if user && User.hash_pw($redis.get("user:id:#{user.id}:salt"), params[:password]) == $redis.get("user:id:#{user.id}:hashed_password")
       $player1_id  = user.id
       redirect '/menu'
-          else
+    else
       @login_error = "Incorrect username or password"
       redirect '/'
     end
@@ -164,6 +159,7 @@ end
 
 class User
   attr_reader :id
+
   def initialize(id)
     @id = id
   end
@@ -200,6 +196,7 @@ end
 
 class Game
   attr_reader :id
+
   def initialize(id)
     @id = id
     @game = [[],[],[],[],[],[],[],[],[],[],[]]
