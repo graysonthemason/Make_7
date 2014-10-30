@@ -21,7 +21,7 @@ class App < Sinatra::Base
     enable :logging
     enable :method_override
     enable :sessions
-    set :session_secret, 'super secret'
+    set    :session_secret, 'super secret'
     $admin = false
     uri = URI.parse(ENV["REDISTOGO_URL"])
     $redis = Redis.new({:host => uri.host,
