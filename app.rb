@@ -2,7 +2,6 @@ require 'sinatra/base'
 require 'redis'
 require 'json'
 require 'uri'
-require 'pry'
 
 class App < Sinatra::Base
 
@@ -29,13 +28,6 @@ class App < Sinatra::Base
                         :port => uri.port,
                         :password => uri.password})
 
-  ####################setup cookies?
-    use Rack::Session::Cookie, :key => 'my_app_key',
-                                :path => '/game',
-                             :expire_after => 14400, # In seconds
-                             :secret => 'secret_stuff'
-  ##################################
-
   end
 
 before do
@@ -61,7 +53,6 @@ before do
   end
 
   get('/game') do
-    # binding.pry
     @player1_wins   = $redis.get("user:id:#{$player1_id}:wins")
     @player2_wins   = $redis.get("user:id:#{$player2_id}:wins")
     @player1_losses = $redis.get("user:id:#{$player1_id}:losses")
