@@ -56,7 +56,7 @@ before do
     @player1_id     = $player1_id
     @player2_id     = $player2_id
     @game_id        = $game_id
-    @game_state     = JSON.parse($redis.get("game:id:#{$game_id}:game")).to_json
+    @game_state     = $redis.get("game:id:#{$game_id}:game")
     render(:erb, :"game")
   end
 
