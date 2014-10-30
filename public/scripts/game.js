@@ -6,8 +6,6 @@ function Game(){
     this.player1Tiles   = [12, 8, 3];
     this.player2Tiles   = [12, 8, 3];
 
-    // this.player1Name    = prompt("Please enter your name", "Player1");
-    // this.player2Name    = prompt("Please enter your name", "Player2");
 }
 
 Game.prototype = {
@@ -36,8 +34,6 @@ Game.prototype = {
           game: JSON.stringify(this.game),
           turn: this.turn,
       }
-    }).done(function(){
-      console.log('!(AJAX) game updated', this);
     });
   },
   diagonal: function() {
@@ -54,7 +50,8 @@ Game.prototype = {
         }
         if (total == 7) {
           gameWinner = "PLAYER NAME";
-          alert('we have a diagonal up winner, turn: '+ this.turn)
+          this.logWin();
+
         }
         count    += 1;
         count2   += 1;
@@ -79,8 +76,7 @@ Game.prototype = {
           }
           if (total == 7) {
             gameWinner = "PLAYER NAME";
-            alert('we have a diagonal down winner, turn: '+ this.turn)
-            init()
+            this.logWin();
           }
           count  += 1;
           count2 -= 1;
@@ -101,10 +97,7 @@ Game.prototype = {
           total = 0;
         }
         if (total == 7) {
-          gameWinner = "PLAYER NAME";
-          alert('we have a column winner, turn: '+ this.turn)
-          init()
-
+          this.logWin();
         }
       }
     }
@@ -122,8 +115,7 @@ Game.prototype = {
         }
         if (total == 7) {
           gameWinner = "PLAYER NAME";
-          alert('we have a row winner, turn: '+ this.turn)
-          init()
+          this.logWin();
         }
       }
       count += 1;
@@ -150,8 +142,23 @@ Game.prototype = {
     this.column();
   },
 
-  updateGame: function() {
-  }
+  logWin: function () {
+      $.ajax({
+      url:      "/winner",
+      type:     "POST",
+      dataType: "json",
+      context:  this, // this sets context in done to the object
+      data: {
+          turn: this.turn,
+      }
+    })
+      if (this.turn){
+        $winner.text("Oh snap! "+$player1_name+" won!")
+      } else {
+        $winner.text("Oh snap! "+$player2_name+" won!")
+      };
+    $winnerBox.removeClass('hide');
+  },
 }
 
 ////////////////////////////////////////
@@ -235,13 +242,24 @@ $checkLeft = $('body > div > div.player1_tiles > img');
 $checkRight = $('body > div > div.player2_tiles > img');
 $rulesShow = $('body > header > h1:nth-child(3) > a');
 $rules = $('body > div > div.rules-wrap > div');
+$winner = $('#winner > span');
+$winnerBox = $('#winner');
+
 $rulesShow.on("click", function(){
-  $rules.removeClass('hide');
+$rules.removeClass('hide');
 })
 $rulesHide = $('body > div > div.rules-wrap > div > button')
 $rulesHide.on('click', function(){
   $rules.addClass('hide');
-})
+});
+$player1_name = $('body > div.overlay > div.player1_tiles > ul > span').text();
+// $player1_name = ;
+$player2_name = $('body > div.overlay > div.player2_tiles > ul > span').text();
+
+$newGame = $('body > header > h1:nth-child(2) > a');
+$newGame.on("click", newGame);
+
+
 function toggleCheck() {
   if(currentGame.turn) {
     $checkLeft.show();
@@ -252,8 +270,13 @@ function toggleCheck() {
   }
 }
 
-
 function newGame() {
+  $.ajax({
+    url:      "/game",
+    type:     "GET",
+    dataType: "json",
+    context:  this, // this sets context in done to the object
+  })
 }
 init();
 

@@ -8,6 +8,77 @@ body, html {
     -ms-user-select: none;
     user-select: none;
 }
+h1.welcome {
+  color: white;
+  font-family: 'Paytone One', sans-serif;
+  text-shadow: 2px 2px 18px black;
+  font-weight: bold;
+  font-size: 4.5em;
+}
+div.form-left {
+  display:inline-block;
+  text-align: center;
+  position: relative;
+  border: solid 10px white;
+  width: 300px;
+  height: 220px;
+  background-color: rgba(255,255,255,.2);
+  padding: 30px;
+  border-radius: 40px;
+  box-shadow: 4px 4px 40px black;
+
+  /*right: 50%;*/
+}
+div.or {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  color: white;
+  font-family: 'Paytone One', sans-serif;
+  text-shadow: 2px 2px 18px black;
+  font-weight: bold;
+  top: 350px;
+  font-size: 3.5em;
+  z-index: 1;
+}
+div.login_form {
+  text-align: center;
+  margin: auto;
+  /*background-color: red;*/
+}
+
+div.form-right {
+  display:inline-block;
+  /*left: 50%;*/
+  text-align: center;
+  position: relative;
+  border: solid 10px white;
+  width: 300px;
+  height: 220px;
+  background-color: rgba(255,255,255,.2);
+  padding: 30px;
+  border-radius: 40px;
+  box-shadow: 4px 4px 40px black;
+
+
+}
+button.backtothegame {
+  left: 187px;
+}
+div.menu {
+  text-align: center;
+  position: relative;
+  margin: auto;
+  margin-top: 100px;
+  border: solid 10px white;
+  width: 300px;
+  height: 220px;
+  background-color: rgba(255,255,255,.2);
+  padding: 30px;
+  border-radius: 40px;
+  box-shadow: 4px 4px 40px black;
+  /*margin-top: 100px;*/
+}
 
 div.game_wrap {
   padding: 0;
@@ -18,6 +89,9 @@ div.game_wrap {
   height: 630px;
   box-shadow: 4px 4px 40px;
   position: relative;
+}
+header {
+  padding-bottom: 6px;
 }
 
 h1.banner {
@@ -32,6 +106,7 @@ a {
 }
 a:hover {
   cursor: pointer;
+  color: yellow;
 }
 
 div.sidebar_left {
@@ -64,8 +139,10 @@ div.divider {
   width: 3px;
   height: 100%;
   background-color: rgb(220,220,220);
-}
+  box-shadow: 2px 0px 20px rgba(0,0,0,.1);
+  z-index: 200;
 
+}
 
 div.tile_contain {
   width: 100%;
@@ -76,7 +153,7 @@ div.tile_contain {
 div.player1_tiles {
   color: white;
   width: 240px;
-  height: 400px;
+  height: 460px;
   text-align: left;
   background: rgba(255,255,255,.4);
   font-size: 1.5em;
@@ -106,7 +183,7 @@ span.name {
 div.player2_tiles {
   color: white;
   width: 240px;
-  height: 400px;
+  height: 460px;
   text-align: left;
   background: rgba(255,255,255,.4);
   font-size: 1.5em;
@@ -115,7 +192,7 @@ div.player2_tiles {
   margin-left: 360px;
   position: absolute;
   border-radius: 20px;
-    box-shadow: 4px 4px 40px rgba(0,0,0,.4);
+  box-shadow: 4px 4px 40px rgba(0,0,0,.4);
   z-index: 600;
   border-top: solid red 58px;
   border-bottom: none;
@@ -285,139 +362,26 @@ div.red7{
 }
 img.right_image {
   position: absolute;
-  top: -30px;
+  top: -40px;
   right: 8px;
 }
 img.left_image {
   position: absolute;
-  top: -30px;
+  top: -40px;
   left: 170px;
 }
-
-@-webkit-keyframes hover {
-  50% {
-    -webkit-transform: translateY(-3px);
-    transform: translateY(-3px);
-  }
-
-  100% {
-    -webkit-transform: translateY(-6px);
-    transform: translateY(-6px);
-  }
-}
-
-@keyframes hover {
-  50% {
-    -webkit-transform: translateY(-3px);
-    transform: translateY(-3px);
-  }
-
-  100% {
-    -webkit-transform: translateY(-6px);
-    transform: translateY(-6px);
-  }
-}
-
-@-webkit-keyframes hover-shadow {
-  0% {
-    -webkit-transform: translateY(6px);
-    transform: translateY(6px);
-    opacity: .4;
-  }
-
-  50% {
-    -webkit-transform: translateY(3px);
-    transform: translateY(3px);
-    opacity: 1;
-  }
-
-  100% {
-    -webkit-transform: translateY(6px);
-    transform: translateY(6px);
-    opacity: .4;
-  }
-}
-
-@keyframes hover-shadow {
-  0% {
-    -webkit-transform: translateY(6px);
-    transform: translateY(6px);
-    opacity: .4;
-  }
-
-  50% {
-    -webkit-transform: translateY(3px);
-    transform: translateY(3px);
-    opacity: 1;
-  }
-
-  100% {
-    -webkit-transform: translateY(6px);
-    transform: translateY(6px);
-    opacity: .4;
-  }
-}
-
-.hover-shadow {
+.glow {
   display: inline-block;
-  position: relative;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
-  -webkit-transition-property: transform;
-  transition-property: transform;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
-.hover-shadow:before {
-  pointer-events: none;
-  position: absolute;
-  z-index: -1;
-  content: '';
-  top: 100%;
-  left: 5%;
-  height: 10px;
-  width: 90%;
-  opacity: 0;
-  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
-  /* W3C */
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: transform, opacity;
-  transition-property: transform, opacity;
-}
-.hover-shadow:hover, .hover-shadow:focus, .hover-shadow:active {
-  -webkit-transform: translateY(-6px);
-  transform: translateY(-6px);
-  -webkit-animation-name: hover;
-  animation-name: hover;
-  -webkit-animation-duration: 1.5s;
-  animation-duration: 1.5s;
-  -webkit-animation-delay: 0.3s;
-  animation-delay: 0.3s;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-direction: alternate;
-  animation-direction: alternate;
-}
-.hover-shadow:hover:before, .hover-shadow:focus:before, .hover-shadow:active:before {
-  opacity: .4;
-  -webkit-transform: translateY(6px);
-  transform: translateY(6px);
-  -webkit-animation-name: hover-shadow;
-  animation-name: hover-shadow;
-  -webkit-animation-duration: 1.5s;
-  animation-duration: 1.5s;
-  -webkit-animation-delay: 0.3s;
-  animation-delay: 0.3s;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-direction: alternate;
-  animation-direction: alternate;
+.glow:hover, .glow:focus, .glow:active {
+  box-shadow: 0 0 12px rgba(0, 0, 0, 1);
 }
 div.rules-wrap {
   position: absolute;
@@ -429,6 +393,7 @@ div.rules-wrap {
 .hide {
   visibility: hidden;
 }
+
 div.rules {
   font-weight: bold;
   position: relative;
@@ -445,6 +410,9 @@ div.rules {
   z-index: 1205;
 }
 input {
+  position:relative;
+
+  /*cursor: black;*/
   padding: 10px;
   border-radius: 20px;
   font-size: 1.4em;
@@ -453,18 +421,23 @@ input {
   font-family: 'Lato', sans-serif;
   font-weight: bold;
   color: red;
+  z-index: 1000;
 }
 input:hover {
   padding: 10px;
   border-radius: 20px;
   font-size: 1.4em;
   margin: 10px;
-  background: red;
+  /*background: red;*/
   font-family: 'Lato', sans-serif;
   font-weight: bold;
-  color: white;
+  /*color: white;*/
+  z-index: 1000;
+
 }
 button {
+  position:relative;
+
   margin:auto;
   padding: 10px;
   border-radius: 20px;
@@ -474,8 +447,12 @@ button {
   font-family: 'Lato', sans-serif;
   font-weight: bold;
   color: red;
+  z-index: 1000;
+
 }
 button:hover {
+  position:relative;
+
   padding: 10px;
   border-radius: 20px;
   font-size: 1.4em;
@@ -484,9 +461,13 @@ button:hover {
   font-family: 'Lato', sans-serif;
   font-weight: bold;
   color: white;
+  z-index: 1000;
+
 }
 
 input.login_button {
+  position:relative;
+
   padding: 10px;
   border-radius: 20px;
   font-size: 1.4em;
@@ -495,28 +476,12 @@ input.login_button {
   font-family: 'Lato', sans-serif;
   font-weight: bold;
   color: red;
+  z-index: 1000;
+
 }
 input.login_button:hover {
-  padding: 10px;
-  border-radius: 20px;
-  font-size: 1.4em;
-  margin: 10px;
-  background: white;
-  font-family: 'Lato', sans-serif;
-  font-weight: bold;
-  color: white;
-}
-button.login_button {
-  padding: 10px;
-  border-radius: 20px;
-  font-size: 1.4em;
-  margin: 10px;
-  background: white;
-  font-family: 'Lato', sans-serif;
-  font-weight: bold;
-  color: red;
-}
-button.login_button:hover {
+  position:relative;
+
   padding: 10px;
   border-radius: 20px;
   font-size: 1.4em;
@@ -525,12 +490,104 @@ button.login_button:hover {
   font-family: 'Lato', sans-serif;
   font-weight: bold;
   color: white;
+  z-index: 1000;
+
+}
+button.login_button {
+  position:relative;
+
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1.4em;
+  margin: 10px;
+  background: white;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  color: red;
+  z-index: 1000;
+
+}
+button.login_button:hover {
+  position:relative;
+
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1.4em;
+  margin: 10px;
+  background: red;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  color: white;
+  z-index: 1000;
+
 }
 
 input.login {
+  position:relative;
   padding: 10px;
   border-radius: 20px;
   font-size: 1.4em;
   margin: 10px;
   font-family: 'Lato', sans-serif;
+  z-index: 1000;
+}
+div.top-left {
+  border-radius: 20px 20px 0 0;
+border: solid 1px black;
+padding: 10px;
+margin-left: 40px;
+margin-right: 40px;
+font-size: .8em;
+background: rgba(0,0,0,.5);
+   -moz-box-shadow:    inset 0 0 10px rgba(0,0,0,.9);
+   -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,.9);
+   box-shadow:         inset 0 0 10px rgba(0,0,0,.9);
+text-shadow: 0 0 20px black;
+}
+div.bottom-left {
+  border-radius: 0 0 20px 20px;
+  border: solid 1px black;
+  padding: 10px;
+  margin-left: 40px;
+  margin-right: 40px;
+  font-size: .8em;
+  background: rgba(0,0,0,.5);
+  -moz-box-shadow:    inset 0 0 10px rgba(0,0,0,.9);
+  -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,.9);
+  box-shadow:         inset 0 0 10px rgba(0,0,0,.9);
+  text-shadow: 0 0 20px black;
+}
+
+div.left-divider {
+  position: absolute;
+}
+
+button.playagain {
+  position: relative;
+  z-index: 1300;
+  font-size: 20px;
+}
+
+div#winner {
+  position: relative;
+  margin: auto;
+  text-align: center;
+  border: solid 10px white;
+  width: 500px;
+  font-size: 3.5em;
+  font-family: 'Paytone One', sans-serif;
+  text-shadow: 2px 2px 18px black;
+  background-color: rgba(0,255,0,.8);
+  padding: 30px;
+  border-radius: 40px;
+  z-index: 2000;
+  box-shadow: 4px 4px 40px black;
+  color: white;
+}
+div#winwrap {
+  position: absolute;
+  width: 100%;
+  top: 100px;
+  text-align: center;
+  /*width: 100%;*/
 }

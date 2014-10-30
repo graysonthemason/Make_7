@@ -15,9 +15,14 @@ class App < Sinatra::Base
     $player2_id = ""
     $game_id = ""
     $turn = ""
+    $player1_wins = ""
+    $player2_wins = ""
+    $player1_losses = ""
+    $player2_losses = ""
     enable :logging
     enable :method_override
     enable :sessions
+    set :session_secret, 'super secret'
     $admin = false
     uri = URI.parse(ENV["REDISTOGO_URL"])
     $redis = Redis.new({:host => uri.host,
@@ -57,14 +62,17 @@ before do
 
   get('/game') do
     # binding.pry
-    @player1_name = $redis.get("user:id:#{$player1_id}:username")
-    @player2_name = $redis.get("user:id:#{$player2_id}:username")
-    @player1_id   = $player1_id
-    @player2_id   = $player2_id
-    @game_id      = $game_id
-    @turn         = $turn
-    @game_state   = JSON.parse($redis.get("game:id:#{$game_id}:game")).to_json
-    # binding.pry
+    @player1_wins   = $redis.get("user:id:#{$player1_id}:wins")
+    @player2_wins   = $redis.get("user:id:#{$player2_id}:wins")
+    @player1_losses = $redis.get("user:id:#{$player1_id}:losses")
+    @player2_losses = $redis.get("user:id:#{$player2_id}:losses")
+    @player1_name   = $redis.get("user:id:#{$player1_id}:username")
+    @player2_name   = $redis.get("user:id:#{$player2_id}:username")
+    @player1_id     = $player1_id
+    @player2_id     = $player2_id
+    @game_id        = $game_id
+    @turn           = $turn
+    @game_state     = JSON.parse($redis.get("game:id:#{$game_id}:game")).to_json
     render(:erb, :"game")
   end
   post('/game') do
@@ -78,6 +86,18 @@ before do
 
   get('/login_player2') do
     render(:erb, :"login2")
+  end
+
+  post('/winner') do
+    if params["turn"] == "true"
+      $redis.incr("user:id:#{$player1_id}:wins")
+      $redis.incr("user:id:#{$player2_id}:losses")
+    else
+      $redis.incr("user:id:#{$player2_id}:wins")
+      $redis.incr("user:id:#{$player1_id}:losses")
+    end
+    status 200
+    body "ok"
   end
 
   post('/signup_player1') do
