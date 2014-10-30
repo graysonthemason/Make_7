@@ -15,171 +15,172 @@
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
   </head>
-<body class='hide'>
-  <header>
-    <h1 class="banner"><a href='/'>Home</a></h1>
-    <h1 class="banner"><a href='/game'>New Game</a></h1>
-    <h1 class="banner"><a>Rules</a></h1>
-  </header>
-  <div id="game-identifier" data-game-id="<%= @game_id%>"></div>
-  <div id="p1-identifier" data-game-id="<%= @player1_name%>"></div>
-  <div id="p2-identifier" data-game-id="<%= @player2_name%>"></div>
-  <div id="game-state-identifier" data-game-id="<%= @game_state%>"></div>
-  <div id="turn-identifier" data-game-id="<%= @turn%>"></div>
-<div class="overlay">
-  <div class="player1_tiles">
-    <img class="left_image" width=60px src="/images/Ok-icon.png">
-    <ul class="playername"><span class="name"><%=@player1_name%></span>
-      <br><br>
-      <div class="top-left">&nbsp;&nbsp;wins&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;losses</div>
-      <div class="bottom-left">
-     <%=@player1_wins%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @player1_losses%>
-     </div>
-      <li>
-        <div class="tilestack1">
-          <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-        </div>
-      </li>
-      <li>
-        <div class="tilestack2">
-          <div class="tilep1 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-          <div class="tilep1  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-          <div class="tilep1  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-          <div class="tilep1  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-          <div class="tilep1  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-          <div class="tilep1  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-          <div class="tilep1  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-          <div class="tilep1  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-        </div>
-        </li>
-      <li>
-        <div class="tilestack3">
-          <div class="tilep1  glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span></div>
-          <div class="tilep1  glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span></div>
-          <div class="tilep1  glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span>
-        </div>
+  <body class='hide'>
+    <header>
+      <h1 class="banner"><a href='/'>Home</a></h1>
+      <h1 class="banner"><a href='/game'>New Game</a></h1>
+      <h1 class="banner"><a>Rules</a></h1>
+    </header>
+    <div id="game-identifier" data-game-id="<%= @game_id%>"></div>
+    <div id="p1-identifier" data-game-id="<%= @player1_name%>"></div>
+    <div id="p2-identifier" data-game-id="<%= @player2_name%>"></div>
+    <div id="game-state-identifier" data-game-id="<%= @game_state%>"></div>
+    <div id="turn-identifier" data-game-id="<%= @turn%>"></div>
+    <div class="overlay">
+      <div class="player1_tiles">
+        <img class="left_image" width=60px src="/images/Ok-icon.png">
+        <ul class="playername"><span class="name"><%=@player1_name%></span>
+          <br><br>
+          <div class="top-left">&nbsp;&nbsp;wins&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;losses</div>
+          <div class="bottom-left">
+         <%=@player1_wins%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @player1_losses%>
+         </div>
+          <li>
+            <div class="tilestack1">
+              <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+            </div>
+          </li>
+          <li>
+            <div class="tilestack2">
+              <div class="tilep1 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep1 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep1 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep1 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep1 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep1 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep1 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep1 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep1 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+            </div>
+            </li>
+          <li>
+            <div class="tilestack3">
+              <div class="tilep1 glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span></div>
+              <div class="tilep1 glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span></div>
+              <div class="tilep1 glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span></div>
+            </div>
+          </li>
+          <br>
+        </ul>
       </div>
-      </li>
-      <br>
-    </ul>
-  </div>
-<div class="player2_tiles">
-  <img class="right_image" width=60px src="/images/Ok-icon.png">
-  <ul class="playername"><span class="name"><%=@player2_name%></span>
-      <br><br>
-            <div class="top-left">&nbsp;&nbsp;wins&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;losses</div>
-      <div class="bottom-left">
-     <%=@player2_wins%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @player2_losses%>
-     </div>
-      <li>
-        <div class="tilestack1">
-          <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-          <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-        </div>
-      </li>
-      <li>
-        <div class="tilestack2">
-          <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-          <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-          <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-          <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-          <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-          <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-          <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-          <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-        </div>
-        </li>
-      <li>
-        <div class="tilestack3">
-          <div class="tilep2  glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span></div>
-          <div class="tilep2  glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span></div>
-          <div class="tilep2  glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span>
-        </div>
+    <div class="player2_tiles">
+      <img class="right_image" width=60px src="/images/Ok-icon.png">
+      <ul class="playername"><span class="name"><%=@player2_name%></span>
+          <br><br>
+                <div class="top-left">&nbsp;&nbsp;wins&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;losses</div>
+          <div class="bottom-left">
+         <%=@player2_wins%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @player2_losses%>
+         </div>
+          <li>
+            <div class="tilestack1">
+              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+            </div>
+          </li>
+          <li>
+            <div class="tilestack2">
+              <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+            </div>
+            </li>
+          <li>
+            <div class="tilestack3">
+              <div class="tilep2  glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span></div>
+              <div class="tilep2  glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span></div>
+              <div class="tilep2  glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span>
+            </div>
+          </div>
+          </li>
+          <br>
+        </ul>
       </div>
-      </li>
-      <br>
-    </ul>
-  </div>
-  <div class="game_wrap">
-    <div class="divider"></div>
-    <div class="col" data-col-idx="0">
-      <div class="tile_contain"></div>
-      <div class="red1"></div>
+      <div class="game_wrap">
+        <div class="divider"></div>
+        <div class="col" data-col-idx="0">
+          <div class="tile_contain"></div>
+          <div class="red1"></div>
+        </div>
+        <div class="divider"></div>
+        <div class="col" data-col-idx="1">
+          <div class="tile_contain"></div>
+          <div class="red2"></div>
+        </div>
+        <div class="divider"></div>
+        <div class="col" data-col-idx="2">
+          <div class="tile_contain"></div>
+          <div class="red3"></div>
+        </div>
+        <div class="divider"></div>
+        <div class="col" data-col-idx="3">
+          <div class="tile_contain"></div>
+          <div class="red4"></div>
+        </div>
+        <div class="divider"></div>
+        <div class="col" data-col-idx="4">
+          <div class="tile_contain"></div>
+          <div class="red5"></div>
+        </div>
+        <div class="divider"></div>
+        <div class="col" data-col-idx="5">
+          <div class="tile_contain"></div>
+          <div class="red6"></div>
+        </div>
+        <div class="divider"></div>
+        <div class="col" data-col-idx="6">
+          <div class="tile_contain"></div>
+          <div class="red7"></div>
+        </div>
+        <div class="divider"></div>
+      </div>
+    <div class="rules-wrap">
+      <div class='rules hide'>
+        <h4>Object:</h4>
+        <ul>
+          <li>Be the first player to have your consecutive tiles add up to 7 (Tiles can add up vertically, horizontally or diagonally!)</li>
+        </ul>
+        <h4>Playing:</h4>
+        <ul>
+          <li>Drag the tile of your choice over a column. "3's" can only be played in the red boxes.</li>
+          <li>For 2 players</li>
+        </ul>
+        <button class="backtothegame">Back to the game!</button>
+      </div>
     </div>
-    <div class="divider"></div>
-    <div class="col" data-col-idx="1">
-      <div class="tile_contain"></div>
-      <div class="red2"></div>
+    <div id="winwrap">
+      <div id="winner" class="hide">
+        <span></span><br>
+        <a href="/game"><button class="playagain">Play Again?</button></a>
+      </div>
     </div>
-    <div class="divider"></div>
-    <div class="col" data-col-idx="2">
-      <div class="tile_contain"></div>
-      <div class="red3"></div>
     </div>
-    <div class="divider"></div>
-    <div class="col" data-col-idx="3">
-      <div class="tile_contain"></div>
-      <div class="red4"></div>
-    </div>
-    <div class="divider"></div>
-    <div class="col" data-col-idx="4">
-      <div class="tile_contain"></div>
-      <div class="red5"></div>
-    </div>
-    <div class="divider"></div>
-    <div class="col" data-col-idx="5">
-      <div class="tile_contain"></div>
-       <div class="red6"></div>
-    </div>
-    <div class="divider"></div>
-    <div class="col" data-col-idx="6">
-      <div class="tile_contain"></div>
-      <div class="red7"></div>
-    </div>
-    <div class="divider"></div>
-  </div>
-  <div class="rules-wrap">
-  <div class='rules hide'>
-    <h4>Object:</h4>
-    <ul>
-    <li>Be the first player to have your consecutive tiles add up to 7 (Tiles can add up vertically, horizontally or diagonally!)</li>
-    </ul>
-    <h4>Playing:</h4>
-    <ul>
-    <li>Drag the tile of your choice over a column. "3's" can only be played in the red boxes.</li>
-    <li>For 2 players</li>
-    </ul>
-    <button class="backtothegame">Back to the game!</button>
-  </div>
-</div>
-<div id="winwrap">
-  <div id="winner" class="hide"><span></span><br>
-  <a href="/game"><button class="playagain">Play Again?</button></a>
-  </div>
-</div>
-</div>
-  <script src="/scripts/main.js"></script>
-  <script src="/scripts/game.js"></script>
-</body>
+    <script src="/scripts/main.js"></script>
+    <script src="/scripts/game.js"></script>
+  </body>
 </html>
