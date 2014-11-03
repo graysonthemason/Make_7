@@ -5,7 +5,6 @@ function Game(){
     this.turn           = true;
     this.player1Tiles   = [12, 8, 3];
     this.player2Tiles   = [12, 8, 3];
-
 }
 
 Game.prototype = {
@@ -35,6 +34,11 @@ Game.prototype = {
           turn: this.turn,
       }
     });
+    $.ajax({
+      url:      "/game",
+      type:     "GET",
+      dataType: "json"
+    });
   },
   diagonal: function() {
     var countStart = -4;
@@ -49,9 +53,7 @@ Game.prototype = {
           total   = 0;
         }
         if (total == 7) {
-          gameWinner = "PLAYER NAME";
           this.logWin();
-
         }
         count    += 1;
         count2   += 1;
@@ -75,7 +77,6 @@ Game.prototype = {
             total   = 0;
           }
           if (total == 7) {
-            gameWinner = "PLAYER NAME";
             this.logWin();
           }
           count  += 1;
@@ -153,9 +154,9 @@ Game.prototype = {
       }
     })
       if (this.turn){
-        $winner.text("Oh snap! "+$player1_name+" won!")
+        $winner.text("Oh snap! "+$player1_name+" won!");
       } else {
-        $winner.text("Oh snap! "+$player2_name+" won!")
+        $winner.text("Oh snap! "+$player2_name+" won!");
       };
     $winnerBox.removeClass('hide');
   },
@@ -174,8 +175,8 @@ function init() {
     $(value).droppable( {
       hoverClass: "container_hover",
       drop: function(ev, ui) {
-        var column = parseInt($(this).data('col-idx'));
-        var val = parseInt($(ui.draggable.context).data('val'));
+        var column      = parseInt($(this).data('col-idx'));
+        var val       = parseInt($(ui.draggable.context).data('val'));
         var draggable = ui.draggable;
         if (column == 0 && val == 3 && currentGame.game[0].length != 2) {
         } else if (column == 1 && val == 3 && currentGame.game[1].length != 4) {

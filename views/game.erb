@@ -3,7 +3,6 @@
 <html>
   <head>
     <meta charset="utf-8">
-
     <title>Make 7</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,8 +10,8 @@
     <link href="/stylesheets/normalize.css" rel="stylesheet" type="text/css" media="all">
     <link href="/stylesheets/style.css" rel="stylesheet" type="text/css" media="all">
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic' rel='stylesheet' type='text/css'>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
   </head>
   <body class='hide'>
@@ -49,10 +48,13 @@
               <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
               <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
               <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
             </div>
           </li>
           <li>
             <div class="tilestack2">
+              <div class="tilep1 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
               <div class="tilep1 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
               <div class="tilep1 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
               <div class="tilep1 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
@@ -78,43 +80,46 @@
       <img class="right_image" width=60px src="/images/Ok-icon.png">
       <ul class="playername"><span class="name"><%=@player2_name%></span>
           <br><br>
-                <div class="top-left">&nbsp;&nbsp;wins&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;losses</div>
-          <div class="bottom-left">
-         <%=@player2_wins%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @player2_losses%>
+          <div class="top-left">&nbsp;&nbsp;wins&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;losses</div>
+          <div class="bottom-left"><%=@player2_wins%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @player2_losses%>
          </div>
           <li>
             <div class="tilestack1">
-              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
-              <div class="tilep2  glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
+              <div class="tilep2 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
             </div>
           </li>
           <li>
             <div class="tilestack2">
-              <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-              <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-              <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-              <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-              <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-              <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-              <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
-              <div class="tilep2  glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep2 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep2 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep2 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep2 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep2 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep2 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep2 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep2 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep2 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
+              <div class="tilep2 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
             </div>
             </li>
           <li>
             <div class="tilestack3">
-              <div class="tilep2  glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span></div>
-              <div class="tilep2  glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span></div>
-              <div class="tilep2  glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span>
+              <div class="tilep2 glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span></div>
+              <div class="tilep2 glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span></div>
+              <div class="tilep2 glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span>
             </div>
           </div>
           </li>
@@ -180,7 +185,7 @@
       </div>
     </div>
     </div>
-    <script src="/scripts/main.js"></script>
+    <!-- <h3><%=@game_state%></h3> -->
     <script src="/scripts/game.js"></script>
   </body>
 </html>

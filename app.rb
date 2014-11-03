@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'redis'
 require 'json'
 require 'uri'
+require 'sinatra/flash'
 
 class App < Sinatra::Base
 
@@ -10,26 +11,26 @@ class App < Sinatra::Base
   ########################
 
   configure do
-    $player1_id = ""
-    $player2_id = ""
-    $game_id = ""
-    $player1_wins = ""
-    $player2_wins = ""
+    $player1_id     = ""
+    $player2_id     = ""
+    $game_id        = ""
+    $player1_wins   = ""
+    $player2_wins   = ""
     $player1_losses = ""
     $player2_losses = ""
     enable :logging
     enable :method_override
     enable :sessions
     set    :session_secret, 'super secret'
+    register Sinatra::Flash
     $admin = false
-    uri = URI.parse(ENV["REDISTOGO_URL"])
+    uri    = URI.parse(ENV["REDISTOGO_URL"])
     $redis = Redis.new({:host => uri.host,
                         :port => uri.port,
                         :password => uri.password})
-
   end
 
-before do
+  before do
     logger.info "Request Headers: #{headers}"
     logger.warn "Params: #{params}"
   end
@@ -37,6 +38,7 @@ before do
   after do
     logger.info "Response Headers: #{response.headers}"
   end
+
   ########################
   # Routes
   ########################
@@ -51,11 +53,11 @@ before do
     @player1_losses = $redis.get("user:id:#{$player1_id}:losses")
     @player2_losses = $redis.get("user:id:#{$player2_id}:losses")
     @player1_name   = $redis.get("user:id:#{$player1_id}:username")
-    @player2_name   = $redis.get("user:id:#{$player2_id}:username")
+    @player2_name   = $redis.get("user:id:#{$player2_id}:username") || "computer"
     @player1_id     = $player1_id
     @player2_id     = $player2_id
     @game_id        = $game_id
-    @game_state     = $redis.get("game:id:#{$game_id}:game")
+    @game_state     = JSON.parse($redis.get("game:id:#{$game_id}:game"))
     render(:erb, :"game")
   end
 
@@ -74,6 +76,16 @@ before do
     render(:erb, :"login2")
   end
 
+  get('/login_computer') do
+    flash[:notice] = "COMING SOON!"
+    redirect '/menu'
+  end
+
+  get('/lobby') do
+    flash[:notice] = "COMING SOON!"
+    redirect '/menu'
+  end
+
   post('/winner') do
     if params["turn"] == "true"
       $redis.incr("user:id:#{$player1_id}:wins")
@@ -90,21 +102,21 @@ before do
     if params[:username] !~ /^\w+$/
       @signup_error = "Username must only contain letters, numbers and underscores."
     elsif $redis.get("user:username:#{params[:username]}")
-      @signup_error = "That username is taken."
-    # elsif params[:username].length < 4
-    #   @signup_error = "Username must be at least 4 characters"
-    # elsif params[:password].length < 6
-    #   @signup_error = "Password must be at least 6 characters!"
+      @signup_error = "That username already exists"
+    elsif params[:username].length < 3
+      @signup_error = "Username must be at least 3 characters"
+    elsif params[:password].length < 6
+      @signup_error = "Password must be at least 6 characters!"
     # elsif params[:password] != params[:password_confirmation]
     #   @signup_error = "Passwords do not match!"
     end
     if @signup_error
-      puts @signup_error
+      flash[:notice] = @signup_error
       redirect to('/')
     else
       user = User.create(params[:username], params[:password])
       $player1_id = user.id
-      redirect to ("/menu")
+      redirect '/menu'
     end
   end
 
@@ -113,20 +125,20 @@ before do
       @signup_error = "Username must only contain letters, numbers and underscores."
     elsif $redis.get("user:username:#{params[:username]}")
       @signup_error = "That username is taken."
-    # elsif params[:username].length < 4
-    #   @signup_error = "Username must be at least 4 characters"
-    # elsif params[:password].length < 6
-    #   @signup_error = "Password must be at least 6 characters!"
+    elsif params[:username].length < 4
+      @signup_error = "Username must be at least 4 characters"
+    elsif params[:password].length < 6
+      @signup_error = "Password must be at least 6 characters!"
     # elsif params[:password] != params[:password_confirmation]
     #   @signup_error = "Passwords do not match!"
     end
     if @signup_error
-      puts @signup_error
+      flash[:notice] = @signup_error
       redirect to('/login_player2')
     else
       user = User.create(params[:username], params[:password])
       $player2_id = user.id
-      redirect to("/game")
+      redirect '/game'
     end
   end
 
@@ -137,6 +149,7 @@ before do
       redirect '/menu'
     else
       @login_error = "Incorrect username or password"
+      flash[:notice] = @login_error
       redirect '/'
     end
   end
@@ -150,12 +163,15 @@ before do
       redirect '/game'
     else
       @login_error = "Incorrect username or password"
+      flash[:notice] = @login_error
       redirect '/login_player2'
     end
   end
 end
 
-############################################
+########################
+# Classes
+########################
 
 class User
   attr_reader :id
@@ -192,7 +208,6 @@ class User
   end
 end
 
-############################################
 
 class Game
   attr_reader :id
