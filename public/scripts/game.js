@@ -136,6 +136,32 @@ Game.prototype = {
     }
   },
 
+  computerRandomPlay: function() {
+    var randomNumber = 2//randomly generated 1, 2, or 3
+    var randomColumn = 2//randomly generated 1-7
+    play(randomNumber, randomColumn)
+  }
+
+  computerRow: function() {
+        var count = 0;
+    var total = 0;
+    do {
+      for (column = 0; column < 7; column++) {
+        if (this.getTileValue(column, count)) {
+          total += this.getTileValue(column, count);
+        } else {
+          total  = 0;
+        }
+        if (total == 7) {
+          gameWinner = "PLAYER NAME";
+          this.logWin();
+        }
+      }
+      count += 1;
+      total = 0
+    } while (count < 7);
+  },
+
   checkForWinner: function() {
     this.row();
     this.diagonal();
@@ -169,7 +195,6 @@ function init() {
   $tilep1 = $('div.tilep1');
   $tilep2 = $('div.tilep2');
   $columns = $('div.col');
-  //hide the rules
   //droppable columns
   $.each($columns, function( index, value ) {
     $(value).droppable( {
@@ -196,7 +221,7 @@ function init() {
     });
   });
 
-//initialize draggability on both players tiles
+//initialize draggability on both player's tiles
   $.each($tilep1, function(index, value){
     // debugger
     $(value).draggable( {
@@ -239,27 +264,25 @@ function toggleDrag() {
     });
   }
 }
-$checkLeft = $('body > div > div.player1_tiles > img');
-$checkRight = $('body > div > div.player2_tiles > img');
-$rulesShow = $('body > header > h1:nth-child(3) > a');
-$rules = $('body > div > div.rules-wrap > div');
-$winner = $('#winner > span');
-$winnerBox = $('#winner');
+
+$checkLeft    = $('body > div > div.player1_tiles > img');
+$checkRight   = $('body > div > div.player2_tiles > img');
+$rulesShow    = $('body > header > h1:nth-child(3) > a');
+$rules        = $('body > div > div.rules-wrap > div');
+$winner       = $('#winner > span');
+$winnerBox    = $('#winner');
+$rulesHide    = $('body > div > div.rules-wrap > div > button')
+$player1_name = $('body > div.overlay > div.player1_tiles > ul > span').text();
+$player2_name = $('body > div.overlay > div.player2_tiles > ul > span').text();
+$newGame      = $('body > header > h1:nth-child(2) > a');
 
 $rulesShow.on("click", function(){
-$rules.removeClass('hide');
+  $rules.removeClass('hide');
 })
-$rulesHide = $('body > div > div.rules-wrap > div > button')
 $rulesHide.on('click', function(){
   $rules.addClass('hide');
 });
-$player1_name = $('body > div.overlay > div.player1_tiles > ul > span').text();
-// $player1_name = ;
-$player2_name = $('body > div.overlay > div.player2_tiles > ul > span').text();
-
-$newGame = $('body > header > h1:nth-child(2) > a');
 $newGame.on("click", newGame);
-
 
 function toggleCheck() {
   if(currentGame.turn) {
