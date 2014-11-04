@@ -2,9 +2,9 @@ console.log("game.js connected!")
 
 function Game(){
     this.game = [[],[],[],[],[],[],[],[],[],[],[]];
-    this.turn           = true;
-    this.player1Tiles   = [12, 8, 3];
-    this.player2Tiles   = [12, 8, 3];
+    this.turn = true;
+    // this.player1Tiles   = [12, 8, 3];
+    // this.player2Tiles   = [12, 8, 3];
 }
 
 Game.prototype = {
@@ -115,7 +115,6 @@ Game.prototype = {
           total  = 0;
         }
         if (total == 7) {
-          gameWinner = "PLAYER NAME";
           this.logWin();
         }
       }
@@ -137,13 +136,30 @@ Game.prototype = {
   },
 
   computerRandomPlay: function() {
-    var randomNumber = 2//randomly generated 1, 2, or 3
-    var randomColumn = 2//randomly generated 1-7
-    play(randomNumber, randomColumn)
-  }
+    var randomColumn = Math.floor(Math.random() * (7));
+    if (randomColumn == 0 && val == 3 && currentGame.game[0].length != 2) {
+        } else if (randomColumn == 1 && currentGame.game[1].length != 4) {
+          var randomNumber = Math.floor(Math.random() * (3 - 1)) + 1
+        } else if (randomColumn == 2 && currentGame.game[2].length != 5) {
+          var randomNumber = Math.floor(Math.random() * (3 - 1)) + 1
+        } else if (randomColumn == 3 && currentGame.game[3].length != 3) {
+          var randomNumber = Math.floor(Math.random() * (3 - 1)) + 1
+        } else if (randomColumn == 4 && currentGame.game[4].length != 5) {
+          var randomNumber = Math.floor(Math.random() * (3 - 1)) + 1
+        } else if (randomColumn == 5 && currentGame.game[5].length != 4) {
+          var randomNumber = Math.floor(Math.random() * (3 - 1)) + 1
+        } else if (randomColumn == 6 && currentGame.game[6].length != 2) {
+          var randomNumber = Math.floor(Math.random() * (3 - 1)) + 1
+        } else {
+          // var randomNumber = Math.floor(Math.random() * (4 - 1)) + 1
+          var randomNumber = 3;
+        }
+        this.play(randomNumber, randomColumn)
+        this.updateGame
+  },
 
   computerRow: function() {
-        var count = 0;
+    var count = 0;
     var total = 0;
     do {
       for (column = 0; column < 7; column++) {
@@ -153,7 +169,6 @@ Game.prototype = {
           total  = 0;
         }
         if (total == 7) {
-          gameWinner = "PLAYER NAME";
           this.logWin();
         }
       }
@@ -185,6 +200,10 @@ Game.prototype = {
         $winner.text("Oh snap! "+$player2_name+" won!");
       };
     $winnerBox.removeClass('hide');
+  },
+
+  updateGame: function () {
+
   },
 }
 
