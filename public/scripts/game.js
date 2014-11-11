@@ -22,6 +22,7 @@ Game.prototype = {
     this.turn = !this.turn;
     toggleDrag();
     toggleCheck();
+    this.updateTileCounts();
     // this.updateGame();
 
     $.ajax({
@@ -204,12 +205,25 @@ Game.prototype = {
 
   updateGame: function () {
     $columns = $('div.col');
-    $.each($columns, function( index, value ) {
-      if (currentGame[index] > // number of divs in the column div)
-
-
-    }
+    // $.each($columns, function( index, value ) {
+      // if (currentGame[index] > // number of divs in the column div)
+    // }
   },
+  updateTileCounts: function () {
+    $player1Tiles1 = $("body > div.overlay > div.player1_tiles > ul > li:nth-child(6) > div").children().length;
+    $("#p1tile1 > span").text($player1Tiles1);
+    $player1Tiles2 = $("body > div.overlay > div.player1_tiles > ul > li:nth-child(7) > div.tilestack2").children().length;
+    $("#p1tile2 > span").text($player1Tiles2);
+    $player1Tiles3 = $("body > div.overlay > div.player1_tiles > ul > li:nth-child(8) > div.tilestack3").children().length;
+    $("#p1tile3 > span").text($player1Tiles3);
+
+    $player2Tiles1 = $("body > div.overlay > div.player2_tiles > ul > li:nth-child(6) > div").children().length;
+    $("#p2tile1 > span").text($player2Tiles1);
+    $player2Tiles2 = $("body > div.overlay > div.player2_tiles > ul > li:nth-child(7) > div.tilestack2").children().length;
+    $("#p2tile2 > span").text($player2Tiles2);
+    $player2Tiles3 = $("body > div.overlay > div.player2_tiles > ul > li:nth-child(8) > div.tilestack3").children().length;
+    $("#p2tile3 > span").text($player2Tiles3);
+  }
 }
 
 ////////////////////////////////////////
@@ -219,6 +233,7 @@ function init() {
   $tilep1 = $('div.tilep1');
   $tilep2 = $('div.tilep2');
   $columns = $('div.col');
+  currentGame.updateTileCounts();
   //droppable columns
   $.each($columns, function( index, value ) {
     $(value).droppable( {

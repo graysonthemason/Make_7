@@ -14,6 +14,6 @@ Game state is saved as an array of arrays of hashes, which through JSON parsing 
 
 ```currentGame => [[{p1: 2}, {p2: 1}],[],[],[],[],[],[]]```
 
-After each play, make7 runs a series of functions that check if the current player has one by iterating through this array. (functions exist in the 'game' prototype in game.js)  If there is no win, the game's turn state toggles and the game goes on.
+After each play, make7 runs a series of functions that check if the current player has one by iterating through this array. (functions exist in the 'game' prototype in game.js)  If there is no win, the game's turn state toggles and the game goes on.  If there is a win, the win count of the winning player is incremented on the server, and the loss count of the losing player is incremented on the server.
 ![screenshot](https://github.com/graysonthemason/Make_7/blob/master/public/images/Screen%20Shot.png)
 

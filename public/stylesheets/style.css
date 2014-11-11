@@ -8,6 +8,55 @@ body, html {
   -ms-user-select: none;
   user-select: none;
 }
+div#p1tile1 {
+  position: absolute;
+  top: 140px;
+  left: 170px;
+  z-index: 500;
+  font-size: 1.4em;
+  color: black;
+}
+div#p1tile2 {
+  position: absolute;
+  top: 246px;
+  left: 170px;
+  z-index: 500;
+  font-size: 1.4em;
+  color: black;
+}
+div#p1tile3 {
+  position: absolute;
+  top: 352px;
+  left: 170px;
+  z-index: 500;
+  font-size: 1.4em;
+  color: black;
+}
+div#p2tile1 {
+  position: absolute;
+  top: 140px;
+  left: 170px;
+  z-index: 500;
+  font-size: 1.4em;
+  color: black;
+}
+div#p2tile2 {
+  position: absolute;
+  top: 246px;
+  left: 170px;
+  z-index: 500;
+  font-size: 1.4em;
+  color: black;
+}
+div#p2tile3 {
+  position: absolute;
+  top: 352px;
+  left: 170px;
+  z-index: 500;
+  font-size: 1.4em;
+  color: black;
+}
+
 h1.welcome {
   color: white;
   font-family: 'Paytone One', sans-serif;
