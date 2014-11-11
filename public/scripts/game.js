@@ -203,7 +203,12 @@ Game.prototype = {
   },
 
   updateGame: function () {
+    $columns = $('div.col');
+    $.each($columns, function( index, value ) {
+      if (currentGame[index] > // number of divs in the column div)
 
+
+    }
   },
 }
 

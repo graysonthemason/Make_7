@@ -8,4 +8,6 @@ ___
 Make7 is a rackup application built on the <a href="https://github.com/sinatra/sinatra">Sinatra</a> framework. The actual game is run on the client side in javascript/html and user and game data is persisted after each turn on a Redis server (non-relational database). <a href="http://jquery.com"/>jQuery</a> handles DOM targeting/editing, and the <a href="http://jqueryui.com/">jQuery UI</a> library handles animation and dynamic manipulation of the DOM. Debugging tools used were the pry and shotgun ruby gems and the chrome developers console.
 </p>
 ___
-<img src="/public/images/screen shot.png" width="800px">
+<!-- <img src="/public/images/screen shot.png" width="800px"> -->
+![screenshot](https://github.com/graysonthemason/Make_7/blob/master/public/images/Screen%20Shot.png)
+
