@@ -40,6 +40,7 @@ Game.prototype = {
       type:     "GET",
       dataType: "json"
     });
+
   },
   diagonal: function() {
     var countStart = -4;
@@ -156,8 +157,40 @@ Game.prototype = {
         // var randomNumber = Math.floor(Math.random() * (4 - 1)) + 1
         var randomNumber = 3;
       }
-      this.play(randomNumber, randomColumn)
       this.updateGame(randomNumber, randomColumn)
+      this.play(randomNumber, randomColumn)
+  },
+  computerPlay: function() {
+    this.computerColumn()
+  },
+
+  computerColumn: function() {
+    for (column = 0; column < 7; column++) {
+      var total = 0;
+      for (row = 0; row < this.game[column].length; row++) {
+        if (this.getTileValue(column, row) && this.getTileValue(column, row) > 0) {
+          total += this.getTileValue(column, row);
+        } else {
+          total = 0;
+        }
+        if (total == 6 && this.game[column].length < 7) {
+          this.updateGame(1, column);
+          this.play(1, column);
+          return
+        }
+        else if (total == 5 && this.game[column].length < 7) {
+          this.updateGame(2, column);
+          this.play(2, column);
+          return
+        }
+        else if (total == 4 && this.three(column) && this.game[column].length < 7) {
+          this.updateGame(3, column);
+          this.play(3, column);
+          return
+        }
+      }
+    }
+    this.computerRow()
   },
 
   computerRow: function() {
@@ -170,13 +203,25 @@ Game.prototype = {
         } else {
           total  = 0;
         }
-        if (total == 7) {
-          this.logWin();
+        if (total == 6) {
+          this.updateGame(1, column + 1);
+          this.play(1, column + 1);
+          return
+        }
+        else if (total == 5) {
+          this.updateGame(2, column + 1);
+          this.play(2, column + 1);
+          return
+        } else if (total == 4 && this.three(column + 1)) {
+          this.updateGame(3, column + 1);
+          this.play(3, column + 1);
+          return
         }
       }
       count += 1;
       total = 0
     } while (count < 7);
+    this.computerRandomPlay()
   },
 
   checkForWinner: function() {
@@ -196,24 +241,37 @@ Game.prototype = {
         turn: this.turn,
       }
     })
-      if (this.turn){
-        $winner.text("Oh snap! "+$player1_name+" won!");
-      } else {
-        $winner.text("Oh snap! "+$player2_name+" won!");
-      };
+    if (this.turn){
+      $winner.text("Oh snap! "+$player1_name+" won!");
+    } else {
+      $winner.text("Oh snap! "+$player2_name+" won!");
+    };
     $winnerBox.removeClass('hide');
   },
 
   updateGame: function (number, column) {
     $columns = $('div.col');
-      $.ajax({
-      url:      "/game",
-      type:     "GET",
-      dataType: "json"
-    });
-    $.each($columns, function( index, value ) {
-      if (currentGame[index] >
+    if (number == 1 && this.turn) {
+      $($columns[column].childNodes[1]).prepend($("div.player1_tiles #draggable1").first().draggable('disable').removeClass("stack").detach().css({top: 0,left: 0}))
+    } else if (number == 2 && this.turn) {
+      $($columns[column].childNodes[1]).prepend($("div.player1_tiles #draggable2").first().draggable('disable').removeClass("stack").detach().css({top: 0,left: 0}))
+    } else if (number == 3 && this.turn) {
+      $($columns[column].childNodes[1]).prepend($("div.player1_tiles #draggable3").first().draggable('disable').removeClass("stack").detach().css({top: 0,left: 0}))
+    } else if (number == 1 && !this.turn) {
+      $($columns[column].childNodes[1]).prepend($("div.player2_tiles #draggable1").first().draggable('disable').removeClass("stack").detach().css({top: 0,left: 0}))
+    } else if (number == 2 && !this.turn) {
+      $($columns[column].childNodes[1]).prepend($("div.player2_tiles #draggable2").first().draggable('disable').removeClass("stack").detach().css({top: 0,left: 0}))
+    } else if (number == 3 && !this.turn) {
+      $($columns[column].childNodes[1]).prepend($("div.player2_tiles #draggable3").first().draggable('disable').removeClass("stack").detach().css({top: 0,left: 0}))
     }
+    //   $.ajax({
+    //   url:      "/game",
+    //   type:     "GET",
+    //   dataType: "json"
+    // });
+    // $.each($columns, function( index, value ) {
+    //   if (currentGame[index] >
+    // }
   },
   updateTileCounts: function () {
     $player1Tiles1 = $("body > div.overlay > div.player1_tiles > ul > li:nth-child(6) > div").children().length;
@@ -230,7 +288,37 @@ Game.prototype = {
     $player2Tiles3 = $("body > div.overlay > div.player2_tiles > ul > li:nth-child(8) > div.tilestack3").children().length;
     $("#p2tile3 > span").text($player2Tiles3);
   },
+  three: function(column) {
+    if (column == 0 && this.game[0].length != 2) {
+      console.log(false)
+      return false
+    } else if (column == 1 && this.game[1].length != 4) {
+      console.log(false)
+      return false
+    } else if (column == 2 && this.game[2].length != 5) {
+      console.log(false)
 
+      return false
+    } else if (column == 3 && this.game[3].length != 3) {
+      console.log(false)
+
+      return false
+    } else if (column == 4 && this.game[4].length != 5) {
+      console.log(false)
+
+      return false
+    } else if (column == 5 && this.game[5].length != 4) {
+      console.log(false)
+
+      return false
+    } else if (column == 6 && this.game[6].length != 2) {
+      console.log(false)
+      return false
+    } else {
+      console.log(true)
+      return true
+    }
+  },
 }
 
 ////////////////////////////////////////
@@ -256,6 +344,7 @@ function init() {
         } else if (column == 4 && val == 3 && currentGame.game[4].length != 5) {
         } else if (column == 5 && val == 3 && currentGame.game[5].length != 4) {
         } else if (column == 6 && val == 3 && currentGame.game[6].length != 2) {
+        } else if (currentGame.game[column].length == 7) {
         } else {
           draggable.draggable( 'option', 'revert', false );
           draggable.draggable( 'disable' );
