@@ -10,50 +10,50 @@ body, html {
 }
 div#p1tile1 {
   position: absolute;
-  top: 140px;
-  left: 170px;
+  top: 150px;
+  left: 180px;
   z-index: 500;
-  font-size: 1.4em;
+  font-size: 1em;
   color: black;
 }
 div#p1tile2 {
   position: absolute;
-  top: 246px;
-  left: 170px;
+  top: 256px;
+  left: 180px;
   z-index: 500;
-  font-size: 1.4em;
+  font-size: 1em;
   color: black;
 }
 div#p1tile3 {
   position: absolute;
-  top: 352px;
-  left: 170px;
+  top: 362px;
+  left: 180px;
   z-index: 500;
-  font-size: 1.4em;
+  font-size: 1em;
   color: black;
 }
 div#p2tile1 {
   position: absolute;
-  top: 140px;
-  left: 170px;
+  top: 150px;
+  left: 180px;
   z-index: 500;
-  font-size: 1.4em;
+  font-size: 1em;
   color: black;
 }
 div#p2tile2 {
   position: absolute;
-  top: 246px;
-  left: 170px;
+  top: 256px;
+  left: 180px;
   z-index: 500;
-  font-size: 1.4em;
+  font-size: 1em;
   color: black;
 }
 div#p2tile3 {
   position: absolute;
-  top: 352px;
-  left: 170px;
+  top: 362px;
+  left: 180px;
   z-index: 500;
-  font-size: 1.4em;
+  font-size: 1em;
   color: black;
 }
 
@@ -428,6 +428,7 @@ div.rules-wrap {
 }
 .hide {
   visibility: hidden;
+  position: absolute;
 }
 
 div.rules {

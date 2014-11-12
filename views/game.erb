@@ -20,11 +20,11 @@
       <h1 class="banner"><a href='/game'>New Game</a></h1>
       <h1 class="banner"><a>Rules</a></h1>
     </header>
-    <div id="game-identifier" data-game-id="<%= @game_id%>"></div>
-    <div id="p1-identifier" data-game-id="<%= @player1_name%>"></div>
-    <div id="p2-identifier" data-game-id="<%= @player2_name%>"></div>
-    <div id="game-state-identifier" data-game-id="<%= @game_state%>"></div>
-    <div id="turn-identifier" data-game-id="<%= @turn%>"></div>
+    <div class="hide" id="game-identifier" data-game-id="<%= @game_id%>"></div>
+    <div class="hide" id="p1-identifier" data-game-playerone-name="<%= @player1_name%>"></div>
+    <div class="hide" id="p2-identifier" data-playertwo-name="<%= @player2_name%>"></div>
+    <div class="hide" id="game-state-identifier" data-game-state="<%= @game_state%>"></div>
+    <div class="hide" id="turn-identifier" data-turn="<%= @turn%>"></div>
     <div class="overlay">
       <div class="player1_tiles">
         <img class="left_image" width=60px src="/images/Ok-icon.png">
@@ -51,7 +51,7 @@
               <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
               <div class="tilep1 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
             </div>
-            <div id="p1tile1">x<span></span></div>
+            <div id="p1tile1">x&nbsp;<span></span></div>
           </li>
           <li>
             <div class="tilestack2">
@@ -66,7 +66,7 @@
               <div class="tilep1 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
               <div class="tilep1 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
             </div>
-            <div id="p1tile2">x<span></span></div>
+            <div id="p1tile2">x&nbsp;<span></span></div>
             </li>
           <li>
             <div class="tilestack3">
@@ -74,7 +74,7 @@
               <div class="tilep1 glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span></div>
               <div class="tilep1 glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span></div>
             </div>
-            <div id="p1tile3">x<span></span></div>
+            <div id="p1tile3">x&nbsp;<span></span></div>
           </li>
           <br>
         </ul>
@@ -103,7 +103,7 @@
               <div class="tilep2 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
               <div class="tilep2 glow stack" id="draggable1" data-val="1"><span class="tiletext">1</span></div>
             </div>
-            <div id="p2tile1">x<span></span></div>
+            <div id="p2tile1">x&nbsp;<span></span></div>
           </li>
           <li>
             <div class="tilestack2">
@@ -118,7 +118,7 @@
               <div class="tilep2 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
               <div class="tilep2 glow stack" id="draggable2" data-val="2"><span class="tiletext">2</span></div>
             </div>
-            <div id="p2tile2">x<span></span></div>
+            <div id="p2tile2">x&nbsp;<span></span></div>
             </li>
           <li>
             <div class="tilestack3">
@@ -126,7 +126,7 @@
               <div class="tilep2 glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span></div>
               <div class="tilep2 glow stack" id="draggable3" data-val="3"><span class="tiletext">3</span></div>
             </div>
-            <div id="p2tile3">x<span></span></div>
+            <div id="p2tile3">x&nbsp;<span></span></div>
           </li>
           <br>
         </ul>

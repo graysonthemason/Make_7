@@ -23,8 +23,8 @@ Game.prototype = {
     toggleDrag();
     toggleCheck();
     this.updateTileCounts();
-    // this.updateGame();
 
+    // this.updateGame();
     $.ajax({
       url:      "/game",
       type:     "POST",
@@ -43,9 +43,9 @@ Game.prototype = {
   },
   diagonal: function() {
     var countStart = -4;
-    var count = -4;
-    var count2 = 0;
-    var total = 0;
+    var count      = -4;
+    var count2     = 0;
+    var total      = 0;
     do {
       do {
         if (count >= 0 && this.getTileValue(count, count2)) {
@@ -67,9 +67,9 @@ Game.prototype = {
 
   diagonalDown: function() {
     var countStart = -4;
-    var count  = -4;
-    var count2 = 6;
-    var total  = 0;
+    var count      = -4;
+    var count2     = 6;
+    var total      = 0;
     do {
       do {
           if (count >= 0 && this.getTileValue(count, count2)) {
@@ -138,25 +138,26 @@ Game.prototype = {
 
   computerRandomPlay: function() {
     var randomColumn = Math.floor(Math.random() * (7));
-    if (randomColumn == 0 && val == 3 && currentGame.game[0].length != 2) {
-        } else if (randomColumn == 1 && currentGame.game[1].length != 4) {
-          var randomNumber = Math.floor(Math.random() * (3 - 1)) + 1
-        } else if (randomColumn == 2 && currentGame.game[2].length != 5) {
-          var randomNumber = Math.floor(Math.random() * (3 - 1)) + 1
-        } else if (randomColumn == 3 && currentGame.game[3].length != 3) {
-          var randomNumber = Math.floor(Math.random() * (3 - 1)) + 1
-        } else if (randomColumn == 4 && currentGame.game[4].length != 5) {
-          var randomNumber = Math.floor(Math.random() * (3 - 1)) + 1
-        } else if (randomColumn == 5 && currentGame.game[5].length != 4) {
-          var randomNumber = Math.floor(Math.random() * (3 - 1)) + 1
-        } else if (randomColumn == 6 && currentGame.game[6].length != 2) {
-          var randomNumber = Math.floor(Math.random() * (3 - 1)) + 1
-        } else {
-          // var randomNumber = Math.floor(Math.random() * (4 - 1)) + 1
-          var randomNumber = 3;
-        }
-        this.play(randomNumber, randomColumn)
-        this.updateGame
+      if (randomColumn == 0 && currentGame.game[0].length != 2) {
+        var randomNumber = Math.floor(Math.random() * (3 - 1)) + 1
+      } else if (randomColumn == 1 && currentGame.game[1].length != 4) {
+        var randomNumber = Math.floor(Math.random() * (3 - 1)) + 1
+      } else if (randomColumn == 2 && currentGame.game[2].length != 5) {
+        var randomNumber = Math.floor(Math.random() * (3 - 1)) + 1
+      } else if (randomColumn == 3 && currentGame.game[3].length != 3) {
+        var randomNumber = Math.floor(Math.random() * (3 - 1)) + 1
+      } else if (randomColumn == 4 && currentGame.game[4].length != 5) {
+        var randomNumber = Math.floor(Math.random() * (3 - 1)) + 1
+      } else if (randomColumn == 5 && currentGame.game[5].length != 4) {
+        var randomNumber = Math.floor(Math.random() * (3 - 1)) + 1
+      } else if (randomColumn == 6 && currentGame.game[6].length != 2) {
+        var randomNumber = Math.floor(Math.random() * (3 - 1)) + 1
+      } else {
+        // var randomNumber = Math.floor(Math.random() * (4 - 1)) + 1
+        var randomNumber = 3;
+      }
+      this.play(randomNumber, randomColumn)
+      this.updateGame(randomNumber, randomColumn)
   },
 
   computerRow: function() {
@@ -186,13 +187,13 @@ Game.prototype = {
   },
 
   logWin: function () {
-      $.ajax({
+    $.ajax({
       url:      "/winner",
       type:     "POST",
       dataType: "json",
       context:  this, // this sets context in done to the object
       data: {
-          turn: this.turn,
+        turn: this.turn,
       }
     })
       if (this.turn){
@@ -203,11 +204,16 @@ Game.prototype = {
     $winnerBox.removeClass('hide');
   },
 
-  updateGame: function () {
+  updateGame: function (number, column) {
     $columns = $('div.col');
-    // $.each($columns, function( index, value ) {
-      // if (currentGame[index] > // number of divs in the column div)
-    // }
+      $.ajax({
+      url:      "/game",
+      type:     "GET",
+      dataType: "json"
+    });
+    $.each($columns, function( index, value ) {
+      if (currentGame[index] >
+    }
   },
   updateTileCounts: function () {
     $player1Tiles1 = $("body > div.overlay > div.player1_tiles > ul > li:nth-child(6) > div").children().length;
@@ -223,15 +229,16 @@ Game.prototype = {
     $("#p2tile2 > span").text($player2Tiles2);
     $player2Tiles3 = $("body > div.overlay > div.player2_tiles > ul > li:nth-child(8) > div.tilestack3").children().length;
     $("#p2tile3 > span").text($player2Tiles3);
-  }
+  },
+
 }
 
 ////////////////////////////////////////
 
 function init() {
   currentGame = new Game;
-  $tilep1 = $('div.tilep1');
-  $tilep2 = $('div.tilep2');
+  $tilep1  = $('div.tilep1');
+  $tilep2  = $('div.tilep2');
   $columns = $('div.col');
   currentGame.updateTileCounts();
   //droppable columns
@@ -239,7 +246,7 @@ function init() {
     $(value).droppable( {
       hoverClass: "container_hover",
       drop: function(ev, ui) {
-        var column      = parseInt($(this).data('col-idx'));
+        var column    = parseInt($(this).data('col-idx'));
         var val       = parseInt($(ui.draggable.context).data('val'));
         var draggable = ui.draggable;
         if (column == 0 && val == 3 && currentGame.game[0].length != 2) {
