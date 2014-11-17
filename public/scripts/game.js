@@ -216,6 +216,9 @@ Game.prototype = {
           this.updateGame(3, column + 1);
           this.play(3, column + 1);
           return
+        } else if (total == 4 && this.getTileValue(column + 2, count) == 2){
+          this.updateGame(1, column + 1);
+          this.play(1, column + 1);
         }
       }
       count += 1;
@@ -223,6 +226,10 @@ Game.prototype = {
     } while (count < 7);
     this.computerRandomPlay()
   },
+
+  // computerDiagonal: function() {
+
+  // },
 
   checkForWinner: function() {
     this.row();
